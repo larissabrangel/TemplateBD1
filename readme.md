@@ -4,10 +4,10 @@ Trabalho desenvolvido durante a disciplina de BD1
 # Sumário
 
 ### 1. COMPONENTES<br>
-Integrantes do grupo<br>
-primeiro_componente_do_grupo:email_primeiro_componente@dominio.com<br>
-segundo_componente_do_grupo:email_segundo_componente@dominio.com<br>
-...<br>
+Ana Júlia Martins - anajcaetanom@gmail.com
+Jessica Duque - jessiend3@gmail.com
+Larissa Rangel - larisb.rangel@gmail.com
+Matheus Caldas - ifesmatheus@gmail.com
 
 
 ### 2.MINI-MUNDO<br>
