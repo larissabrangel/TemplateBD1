@@ -123,10 +123,8 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
 #### a) Modelo (pecha kucha)<br>
 #### b) Tempo de apresentação 6:40
 
-># Marco de Entrega 04: Itens 10 e 11 (20 PTS) <br>
-<br>
-<br>
 
+># Marco de Entrega 04: Itens 10 e 11 (20 PTS) <br>
 
 ### 11. FORMATACAO NO GIT:<br>
 https://help.github.com/articles/basic-writing-and-formatting-syntax/
