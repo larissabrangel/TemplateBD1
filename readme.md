@@ -51,17 +51,17 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
 
 ># Marco de Entrega 01: Do item 1 até o item 5.2 (5 PTS) <br>
 
-### 5	MODELO LÓGICO<br>
+### 5.	MODELO LÓGICO<br>
 ![BD_PACIENTES_LOGICO](https://github.com/user-attachments/assets/d80cf85f-2858-4993-9bc6-916eb4fbbaf7)
 
 
 
-### 6	MODELO FÍSICO<br>
+### 6.	MODELO FÍSICO<br>
         a) inclusão das instruções de criacão das estruturas em SQL/DDL
         (criação de tabelas, alterações, etc..)
 
       
-### 7	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
+### 7.	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
         a) Script das instruções relativas a inclusão de dados
 	Requisito mínimo: (Script dev conter: Drop para exclusão de tabelas + create definição de para tabelas e estruturas de dados + insert para dados a serem inseridos)
         OBS
@@ -69,7 +69,7 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
         2) script deve ser incluso no template em um arquivo no formato .SQL
 
 
-### 8	TABELAS E PRINCIPAIS CONSULTAS<br>
+### 8.	TABELAS E PRINCIPAIS CONSULTAS<br>
     OBS: Usa template da disciplina disponibilizado no Colab.<br>
 #### 8.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 
@@ -110,7 +110,7 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
 
 ># Marco de Entrega 03: Do item 9.2 até o ítem 9.10 (10 PTS)<br>
 
-### 9 RELATÓRIOS E GRÁFICOS
+### 9. RELATÓRIOS E GRÁFICOS
 
 #### a) análises e resultados provenientes do banco de dados desenvolvido (usar modelo disponível)
 #### b) link com exemplo de relatórios será disponiblizado pelo professor no AVA
@@ -118,7 +118,7 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
 
     
 
-### 10	AJUSTES DA DOCUMENTAÇÃO, CRIAÇÃO DOS SLIDES E VÍDEO PARA APRESENTAÇAO FINAL <br>
+### 10.	AJUSTES DA DOCUMENTAÇÃO, CRIAÇÃO DOS SLIDES E VÍDEO PARA APRESENTAÇAO FINAL <br>
 
 #### a) Modelo (pecha kucha)<br>
 #### b) Tempo de apresentação 6:40
@@ -128,9 +128,7 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
 <br>
 
 
-
-
-### 11 FORMATACAO NO GIT:<br>
+### 11. FORMATACAO NO GIT:<br>
 https://help.github.com/articles/basic-writing-and-formatting-syntax/
 <comentario no git>
     
