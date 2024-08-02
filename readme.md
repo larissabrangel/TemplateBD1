@@ -52,10 +52,8 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
 ># Marco de Entrega 01: Do item 1 até o item 5.2 (5 PTS) <br>
 
 ### 6	MODELO LÓGICO<br>
-        a) inclusão do esquema lógico do banco de dados
-        b) verificação de correspondencia com o modelo conceitual
-        (não serão aceitos modelos que não estejam em conformidade)
-	![image](https://github.com/user-attachments/assets/a5be5ff2-4120-49e5-b8ef-c91f4b369e62)
+![BD_PACIENTES_LOGICO](https://github.com/user-attachments/assets/d80cf85f-2858-4993-9bc6-916eb4fbbaf7)
+
 
 
 ### 7	MODELO FÍSICO<br>
