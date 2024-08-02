@@ -215,13 +215,64 @@ ALTER TABLE USO_APARELHO ADD CONSTRAINT FK_USO_APARELHO_2
     FOREIGN KEY (fk_exame_codigo)
     REFERENCES EXAME (codigo)
     ON DELETE SET NULL;
+
       
 ### 7.	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
-        a) Script das instruções relativas a inclusão de dados
-	Requisito mínimo: (Script dev conter: Drop para exclusão de tabelas + create definição de para tabelas e estruturas de dados + insert para dados a serem inseridos)
-        OBS
-	1) Criar um novo banco de dados para testar a restauracao (em caso de falha na restauração o grupo não pontuará neste quesito)
-        2) script deve ser incluso no template em um arquivo no formato .SQL
+insert into PACIENTE (codigo, cpf, nome, data_nasc, id) values
+	(001, , '', '', '', ''),
+	(002, , '', '', '', '');
+
+insert into EXAME (codigo, data_hora_realizacao) values 
+	(001, ''),
+	(002, '');
+
+insert into EXAME_PACIENTE (codigo, fk_paciente_codigo, fk_exame_codigo) values 
+	(001, , ),
+	(002, , );
+
+insert into APARELHO (codigo, marca, disponivel) values 
+	(001, '', ),
+	(002, '', );
+
+insert into USO_APARELHO (codigo, fk_exame_codigo, fk_aparelho_codigo) values 
+	(001, , ),
+	(002, , );
+
+insert into LAUDO (codigo, data_hora_geracao, fk_exame_codigo) values 
+	(001, '', ),
+	(002, '', );
+
+insert into RADIOLOGISTA (codigo, cpf, nome, disponivel) values 
+	(001, , '', ),
+	(002, , '', );
+
+insert into RADIOLOGISTA_LAUDO (codigo, fk_radiologista_codigo, fk_laudo_codigo) values 
+	(001, , ),
+	(002, , );
+
+insert into PATOLOGIA (codigo, nome, nivel_gravidade) values 
+	(001, '', ),
+	(002, '', );
+
+insert into PATOLOGIA_LAUDO (codigo, fk_laudo_codigo, fk_patologia_codigo) values 
+	(001, , ),
+	(002, , );
+
+insert into REGISTRO_EXAME (codigo, data_hora_geracao, condicaoehPatologica, fk_exame_codigo) values 
+	(001, '', , ),
+	(002, '', , );
+
+insert into PREDICAO (codigo, fk_patologia_codigo, fk_registro_exame_codigo, confiabilidade) values 
+	(001, , , ),
+	(002, , , );
+
+insert into IMAGEM_RECONHECIMENTO (codigo, fk_registro_exame_codigo, fk_imagem_reconhecimento_codigo) values 
+	(001, , ),
+	(002, , );
+
+insert into IMAGEM_REGISTRO (codigo, img) values 
+	(001, ''),
+	(002, '');
 
 
 ### 8.	TABELAS E PRINCIPAIS CONSULTAS<br>
