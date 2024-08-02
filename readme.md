@@ -219,7 +219,7 @@ ALTER TABLE USO_APARELHO ADD CONSTRAINT FK_USO_APARELHO_2
       
 ### 7.	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 insert into PACIENTE (codigo, cpf, nome, data_nasc, id) values
-	(001, , '', '', '', ''),
+	(001, , '123.456.789-00', '', '', ''),
 	(002, , '', '', '', '');
 
 insert into EXAME (codigo, data_hora_realizacao) values 
