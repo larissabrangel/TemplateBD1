@@ -43,7 +43,8 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
         Criar o esquema de forma a garantir a redução de informação redundante, possibilidade de valores null,
         e tuplas falsas (Aplicar os conceitos de normalização abordados).   
         
-![Alt text](blob:https://web.whatsapp.com/16bce09e-286e-4362-ba32-09b5c928bff2 "Modelo Conceitual")
+![BD_PACIENTES_CONCEITUAL](https://github.com/user-attachments/assets/50ccfcae-8973-48e8-b376-941dc293a127)
+
     
     
 #### 5.1 Validação do Modelo Conceitual
