@@ -17,7 +17,7 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 
 ### 3.PERGUNTAS A SEREM RESPONDIDAS<br>
 #### 3.1 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
-> O hospital moderno inicialmente dos seguintes relatórios:
+> O hospital moderno precisa inicialmente dos seguintes relatórios:
 
 * Relatório de Eficiência de Máquinas de Raio X: Mostra o ID da máquina, marca, número de exames realizados por dia, semana ou mês, e taxa de utilização. Ajuda a identificar quais máquinas são mais utilizadas e se precisam de manutenção.
 
