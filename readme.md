@@ -55,6 +55,8 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
         a) inclusão do esquema lógico do banco de dados
         b) verificação de correspondencia com o modelo conceitual
         (não serão aceitos modelos que não estejam em conformidade)
+	![image](https://github.com/user-attachments/assets/a5be5ff2-4120-49e5-b8ef-c91f4b369e62)
+
 
 ### 7	MODELO FÍSICO<br>
         a) inclusão das instruções de criacão das estruturas em SQL/DDL
