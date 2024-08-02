@@ -57,7 +57,7 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
     
     
 #### 5.1 Validação do Modelo Conceitual
-    [Grupo01]: [Nomes dos que participaram na avaliação]
+    [Grupo01]: Thiago Borges, Caio Lessa, Marcos Figueira, Davidson Santos
     [Grupo02]: [Nomes dos que participaram na avaliação]
 
 #### 5.2 Descrição dos dados
