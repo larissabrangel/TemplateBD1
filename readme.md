@@ -19,8 +19,8 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 #### 3.1 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
 > O hospital moderno precisa inicialmente dos seguintes relatórios:
 
-* Relatório de Eficiência de Máquinas de Raio X: Mostra o ID da máquina, marca, número de exames realizados por dia, semana ou mês, e taxa de utilização.
-
+* Relatório de Eficiência de Máquinas de Raio X: Mostra o ID da máquina, marca, número de exames realizados por mês.
+  
 * Relatório de Diagnósticos da IA e Revisões Médicas:
 Contém a lista de exames analisados pela IA, tipo de patologias detectadas, grau de confiabilidade das predições, e número de casos revisados pelos especialistas.
 
