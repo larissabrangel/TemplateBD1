@@ -44,28 +44,73 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
     [Grupo02]: [Nomes dos que participaram na avaliação]
 
 #### 4.2 Descrição dos dados
-    [objeto]: [descrição do objeto]
+    PACIENTE: Tabela que armazena as informações relativas ao paciente.
+    CODIGO (da tabela PACIENTE): Campo para indicar o código de identificação no banco de dados do paciente.
+    CPF (da tabela PACIENTE): Campo para indicar o cpf do paciente.
+    NOME (da tabela PACIENTE): Campo para indicar o nome do paciente.
+    DATA_NASC: Campo para indicar a data de nascimento do paciente.
+    ID: ???
     
-    EXEMPLO:
-    CLIENTE: Tabela que armazena as informações relativas ao cliente<br>
-    CPF: campo que armazena o número de Cadastro de Pessoa Física para cada cliente da empresa.<br>
+    EXAME: Tabela que armazena as informações sobre um exame realizado.
+    CODIGO (da tabela EXAME): Campo para indicar o código de identificação no banco de dados do exame.
+    DATA_HORA_REALIZACAO: Campo para indicar a data e o horário em que um exame foi realizado com um paciente.
+    
+    APARELHO: Tabela que armazena as informações sobre um aparelho de raio X.
+    CODIGO (da tabela APARELHO): Campo para indicar o código de identificação no banco de dados do aparelho.
+    MARCA: Campo para indicar a marca origem de um aparelho.
+    DISPONIVEL (da tabela APARELHO): Campo para indicar se um aparelho está ou não disponível para o uso no momento.
+    
+    REGISTRO_EXAME: Tabela que armazena as informações sobre um registro de exame gerado após o uso de um aparelho.
+    CODIGO (da tabela REGISTRO_EXAME): Campo para indicar o código de identificação no banco de dados do registro de exame.
+    DATA_HORA_GERACAO (da tabela REGISTRO_EXAME): Campo para indicar a data e o horário de geração de um relatório após a predição de patologias da inteligência artificial.
+    CONDICAOEHPATOLOGICA: Campo booleano para indicar se a condição reconhecida é de saúde, ou se é patológica.
+    FK_EXAME_CODIGO (da tabela REGISTRO_EXAME): Campo para indicar uma chave estrangeira apontando ao exame relacionado ao mesmo caso deste registro_exame.
+    
+    IMAGEM_RECONHECIMENTO: Tabela que armazena as informações sobre as imagens proporcionadas para a predição da inteligência artificial sobre a condição ser ou não patológica.
+    CODIGO (da tabela IMAGEM_RECONHECIMENTO): Campo para indicar o código de identificação no banco de dados de uma imagem usada para o reconhecimento.
+    IMG: Campo para conter um link que lide à imagem utilizada em um registro para depois fazer uma predição.
+    
+    PATOLOGIA: Tabela que armazena as informações sobre uma patologia possível.
+    CODIGO (da tabela PATOLOGIA): Campo para indicar o código de identificação no banco de dados de uma patologia.
+    NOME (da tabela PATOLOGIA): Campo para indicar o nome de uma patologia.
+    NIVEL_GRAVIDADE: Campo para indicar o nivel de gravidade pré-determinado de uma patologia.
+
+    PREDICAO: Tabela que armazena as informações sobre uma predição realizada.
+    CODIGO (da tabela PREDICAO): Campo para indicar o código de identificação no banco de dados de uma predição.
+    FK_PATOLOGIA_CODIGO (da tabela PREDICAO): Campo para indicar uma chave estrangeira apontando à patologia prevista pela inteligência artificial de uma predição.
+    FK_REGISTRO_EXAME_CODIGO (da tabela PREDICAO): Campo para indicar uma chave estrangeira apontando o registro_exame relacionado ao caso envolvida com a predição realizada.
+    CONFIABILIDADE: Campo para indicar a confiabilidade dada pela IA na predição de certa patologia.
+
+    LAUDO: Tabela que armazena as informações sobre um laudo.
+    CODIGO (da tabela LAUDO): Campo para indicar o código de identificação no banco de dados de um laudo.
+    DATA_HORA_GERACAO (da tabela LAUDO): Campo para indicar a data e o horário em que um laudo foi gerado por um radiologista para o paciente.
+    FK_EXAME_CODIGO (da tabela LAUDO): Campo para indicar uma chave estrangeira apontando ao exame relacionado ao mesmo caso deste laudo.
+
+    RADIOLOGISTA: Tabela que armazena as informações sobre um radiologista.
+    CODIGO (da tabela RADIOLOGISTA): Campo para indicar o código de identificação no banco de dados de um radiologista que trabalha no local.
+    CPF (da tabela RADIOLOGISTA): Campo para indicar o cpf do radiologista.
+    NOME (da tabela RADIOLOGISTA): Campo para indicar o nome do radiologista.
+    DISPONIVEL (da tabela RADIOLOGISTA): Campo para indicar se um radiologista está ou não disponível para atendimento no momento.
+
+
 
 ># Marco de Entrega 01: Do item 1 até o item 5.2 (5 PTS) <br>
 
 ### 5.	MODELO LÓGICO<br>
-![BD_PACIENTES_LOGICO](https://github.com/user-attachments/assets/c670b0ba-d7c8-46d0-8249-e761d05452e4)
+![BD_PACIENTES_LOGICO](https://github.com/user-attachments/assets/4b80143f-5b64-448d-a36c-67c71ad79e16)
+
 
 
 
 ### 6.	MODELO FÍSICO<br>
 /* BD_PACIENTES_LOGICO: */
 
-CREATE TABLE PACIENTE (
-    codigo serial PRIMARY KEY,
-    cpf DOUBLE,
+CREATE TABLE IF NOT EXISTS PACIENTE (
+    codigo SERIAL PRIMARY KEY,
+    cpf BIGINT,
     nome VARCHAR(80),
     data_nasc DATE,
-    id VARCHAR(40)
+    id VARHCHAR(30)
 );
 
 CREATE TABLE APARELHO (
@@ -77,7 +122,7 @@ CREATE TABLE APARELHO (
 CREATE TABLE REGISTRO_EXAME (
     codigo serial PRIMARY KEY,
     data_hora_geracao TIMESTAMP,
-    condicaoehPatologica BOOLEAN,
+    condicaoEhPatologica BOOLEAN,
     fk_exame_codigo INTEGER
 );
 
@@ -90,19 +135,21 @@ CREATE TABLE RADIOLOGISTA (
 
 CREATE TABLE PATOLOGIA (
     codigo serial PRIMARY KEY,
-    nome VARCHAR(80),
+    nome VARCHAR(50),
     nivel_gravidade INTEGER
 );
 
 CREATE TABLE LAUDO (
     codigo serial PRIMARY KEY,
     data_hora_geracao TIMESTAMP,
+    fk_exame_codigo INTEGER,
     fk_exame_codigo INTEGER
 );
 
 CREATE TABLE IMAGEM_RECONHECIMENTO (
     codigo serial PRIMARY KEY,
-    img VARCHAR(200)
+    img VARCHAR(150)
+    fk_registro_exame_codigo INTEGER
 );
 
 CREATE TABLE EXAME (
@@ -113,13 +160,7 @@ CREATE TABLE EXAME (
 CREATE TABLE PREDICAO (
     fk_patologia_codigo INTEGER,
     fk_registro_exame_codigo INTEGER,
-    confiabilidade FLOAT,
-    codigo serial PRIMARY KEY
-);
-
-CREATE TABLE IMAGEM_REGISTRO (
-    fk_registro_exame_codigo INTEGER,
-    fk_imagem_reconhecimento_codigo INTEGER,
+    confiabilidade DECIMAL,
     codigo serial PRIMARY KEY
 );
 
@@ -129,32 +170,34 @@ CREATE TABLE PATOLOGIA_LAUDO (
     codigo serial PRIMARY KEY
 );
 
-CREATE TABLE RADIOLOGISTA_LAUDO (
-    fk_radiologista_codigo INTEGER,
-    fk_laudo_codigo INTEGER,
-    codigo serial PRIMARY KEY
-);
-
-CREATE TABLE EXAME_PACIENTE (
-    fk_paciente_codigo INTEGER,
-    fk_exame_codigo INTEGER,
-    codigo serial PRIMARY KEY
-);
-
-CREATE TABLE USO_APARELHO (
-    fk_aparelho_codigo INTEGER,
-    fk_exame_codigo INTEGER,
-    codigo serial PRIMARY KEY
-);
- 
 ALTER TABLE REGISTRO_EXAME ADD CONSTRAINT FK_REGISTRO_EXAME_2
     FOREIGN KEY (fk_exame_codigo)
     REFERENCES EXAME (codigo)
     ON DELETE CASCADE;
  
 ALTER TABLE LAUDO ADD CONSTRAINT FK_LAUDO_2
+    FOREIGN KEY (fk_radiologista_codigo)
+    REFERENCES RADIOLOGISTA (codigo)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE LAUDO ADD CONSTRAINT FK_LAUDO_3
     FOREIGN KEY (fk_exame_codigo)
     REFERENCES EXAME (codigo)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE IMAGEM_RECONHECIMENTO ADD CONSTRAINT FK_IMAGEM_RECONHECIMENTO_2
+    FOREIGN KEY (fk_registro_exame_codigo)
+    REFERENCES REGISTRO_EXAME (codigo)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE EXAME ADD CONSTRAINT FK_EXAME_2
+    FOREIGN KEY (fk_paciente_codigo)
+    REFERENCES PACIENTE (codigo)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE EXAME ADD CONSTRAINT FK_EXAME_3
+    FOREIGN KEY (fk_aparelho_codigo)
+    REFERENCES APARELHO (codigo)
     ON DELETE CASCADE;
  
 ALTER TABLE PREDICAO ADD CONSTRAINT FK_PREDICAO_1
@@ -167,16 +210,6 @@ ALTER TABLE PREDICAO ADD CONSTRAINT FK_PREDICAO_2
     REFERENCES REGISTRO_EXAME (codigo)
     ON DELETE SET NULL;
  
-ALTER TABLE IMAGEM_REGISTRO ADD CONSTRAINT FK_IMAGEM_REGISTRO_1
-    FOREIGN KEY (fk_registro_exame_codigo)
-    REFERENCES REGISTRO_EXAME (codigo)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE IMAGEM_REGISTRO ADD CONSTRAINT FK_IMAGEM_REGISTRO_2
-    FOREIGN KEY (fk_imagem_reconhecimento_codigo)
-    REFERENCES IMAGEM_RECONHECIMENTO (codigo)
-    ON DELETE RESTRICT;
- 
 ALTER TABLE PATOLOGIA_LAUDO ADD CONSTRAINT FK_PATOLOGIA_LAUDO_1
     FOREIGN KEY (fk_laudo_codigo)
     REFERENCES LAUDO (codigo)
@@ -185,38 +218,7 @@ ALTER TABLE PATOLOGIA_LAUDO ADD CONSTRAINT FK_PATOLOGIA_LAUDO_1
 ALTER TABLE PATOLOGIA_LAUDO ADD CONSTRAINT FK_PATOLOGIA_LAUDO_2
     FOREIGN KEY (fk_patologia_codigo)
     REFERENCES PATOLOGIA (codigo)
-    ON DELETE SET NULL;
- 
-ALTER TABLE RADIOLOGISTA_LAUDO ADD CONSTRAINT FK_RADIOLOGISTA_LAUDO_1
-    FOREIGN KEY (fk_radiologista_codigo)
-    REFERENCES RADIOLOGISTA (codigo)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE RADIOLOGISTA_LAUDO ADD CONSTRAINT FK_RADIOLOGISTA_LAUDO_2
-    FOREIGN KEY (fk_laudo_codigo)
-    REFERENCES LAUDO (codigo)
-    ON DELETE SET NULL;
- 
-ALTER TABLE EXAME_PACIENTE ADD CONSTRAINT FK_EXAME_PACIENTE_1
-    FOREIGN KEY (fk_paciente_codigo)
-    REFERENCES PACIENTE (codigo)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE EXAME_PACIENTE ADD CONSTRAINT FK_EXAME_PACIENTE_2
-    FOREIGN KEY (fk_exame_codigo)
-    REFERENCES EXAME (codigo)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE USO_APARELHO ADD CONSTRAINT FK_USO_APARELHO_1
-    FOREIGN KEY (fk_aparelho_codigo)
-    REFERENCES APARELHO (codigo)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE USO_APARELHO ADD CONSTRAINT FK_USO_APARELHO_2
-    FOREIGN KEY (fk_exame_codigo)
-    REFERENCES EXAME (codigo)
-    ON DELETE SET NULL;
-
+    ON DELETE SET NULL;    
       
 ### 7.	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 insert into PACIENTE (codigo, cpf, nome, data_nasc, id) values
