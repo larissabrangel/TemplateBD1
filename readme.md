@@ -143,7 +143,7 @@ CREATE TABLE LAUDO (
     codigo serial PRIMARY KEY,
     data_hora_geracao TIMESTAMP,
     fk_exame_codigo INTEGER,
-    fk_exame_codigo INTEGER
+    fk_radiologista_codigo INTEGER
 );
 
 CREATE TABLE IMAGEM_RECONHECIMENTO (
