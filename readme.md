@@ -19,18 +19,15 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 #### 3.1 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
 > O hospital moderno precisa inicialmente dos seguintes relatórios:
 
-* Relatório de Eficiência de Máquinas de Raio X: Mostra o ID da máquina, marca, número de exames realizados por mês.
-  
-* Relatório de Diagnósticos da IA e Revisões Médicas:
-Contém a lista de exames analisados pela IA, tipo de patologias detectadas, grau de confiabilidade das predições, e número de casos revisados pelos especialistas.
+* Relatório 1: Exames Realizados por Paciente. Objetivo: Obter um relatório que mostre o nome de cada paciente e a quantidade total de exames realizados por ele.
 
-* Relatório de Timestamps do Processo de Atendimento:
-Detalha cada etapa do processo, desde o agendamento até a entrega do resultado final, com os respectivos timestamps.
+* Relatório 2: Patologias Diagnósticas com Maior Frequência. Objetivo: Identificar quais patologias são mais frequentemente diagnosticadas.
 
-* Relatório de Resultados dos Exames e Diagnósticos:
-Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pessoais, histórico médico, diagnósticos da IA, revisões dos especialistas e laudos entregues
+* Relatório 3: Radiologistas e Seus Exames Realizados. Objetivo: Listar cada radiologista e a quantidade total de exames realizados por ele.
 
-* Relatório ??
+* Relatório 4: Patologias e Seus Níveis de Gravidade Médios. Objetivo: Calcular o nível de gravidade médio das patologias diagnosticadas.
+
+* Relatório 5: Frequência de Exames por Aparelho. Objetivo: Determinar a quantidade de exames realizados por cada tipo de aparelho para avaliar a frequência de uso e identificar quais equipamentos são mais requisitados.
 
     
 ### 4. MODELO CONCEITUAL<br> 
