@@ -35,7 +35,8 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
     
 ### 4. MODELO CONCEITUAL<br> 
         
-![BD_PACIENTES_CONCEITUAL](https://github.com/user-attachments/assets/50ccfcae-8973-48e8-b376-941dc293a127)
+![BD_PACIENTES_CONCEITUAL](https://github.com/user-attachments/assets/d87b6dde-fbf2-40aa-b569-c9f37886fc47)
+
 
     
 #### 4.1 Validação do Modelo Conceitual
