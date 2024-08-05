@@ -49,7 +49,7 @@ Apresenta os resultados dos exames de todos os pacientes, incluindo detalhes pes
     CPF (da tabela PACIENTE): Campo para indicar o cpf do paciente.
     NOME (da tabela PACIENTE): Campo para indicar o nome do paciente.
     DATA_NASC: Campo para indicar a data de nascimento do paciente.
-    ID: ???
+    ID: Identificador do paciente
     
     EXAME: Tabela que armazena as informações sobre um exame realizado.
     CODIGO (da tabela EXAME): Campo para indicar o código de identificação no banco de dados do exame.
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS PACIENTE (
     cpf BIGINT,
     nome VARCHAR(80),
     data_nasc DATE,
-    id VARHCHAR(30)
+    id VARCHAR(30)
 );
 
 CREATE TABLE APARELHO (
@@ -128,7 +128,7 @@ CREATE TABLE REGISTRO_EXAME (
 
 CREATE TABLE RADIOLOGISTA (
     codigo serial PRIMARY KEY,
-    cpf DOUBLE,
+    cpf BIGINT,
     nome VARCHAR(80),
     disponivel BOOLEAN
 );
@@ -142,8 +142,8 @@ CREATE TABLE PATOLOGIA (
 CREATE TABLE LAUDO (
     codigo serial PRIMARY KEY,
     data_hora_geracao TIMESTAMP,
-    fk_exame_codigo INTEGER,
-    fk_radiologista_codigo INTEGER
+    fk_radiologista_codigo INTEGER,
+    fk_exame_codigo INTEGER
 );
 
 CREATE TABLE IMAGEM_RECONHECIMENTO (
@@ -154,7 +154,9 @@ CREATE TABLE IMAGEM_RECONHECIMENTO (
 
 CREATE TABLE EXAME (
     codigo serial PRIMARY KEY,
-    data_hora_realizacao TIMESTAMP
+    data_hora_realizacao TIMESTAMP,
+    fk_paciente_codigo INTEGER,
+    fk_aparelho_codigo INTEGER
 );
 
 CREATE TABLE PREDICAO (
