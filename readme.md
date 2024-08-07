@@ -462,6 +462,7 @@ INSERT INTO PATOLOGIA_LAUDO (codigo, fk_laudo_codigo, fk_patologia_codigo) VALUE
 (48, 8, 15),
 (49, 10, 6),
 (50, 15, 9);
+[Uploading BD_COD.sql…]()
 
 
 ### 8.	TABELAS E PRINCIPAIS CONSULTAS<br>
