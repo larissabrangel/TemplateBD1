@@ -470,6 +470,8 @@ INSERT INTO PATOLOGIA_LAUDO (codigo, fk_laudo_codigo, fk_patologia_codigo) VALUE
 
 #### 8.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
 Exemplo 1: Filtrar aparelhos disponíveis
+
+
 ![image](https://github.com/user-attachments/assets/385c9c0d-9664-4950-a9c8-1090e53b25c4)
 
 #### 8.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
