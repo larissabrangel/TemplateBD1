@@ -506,11 +506,11 @@ WHERE disponivel = true;
     b) Criar no mínimo 3 consultas com operadores aritméticos
     c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
     
->a) Marcas especificas disponíveis
+a) Marcas especificas disponíveis
 
-SELECT * FROM APARELHO
-WHERE (marca = 'Philips' OR marca = 'Siemens')
-  AND disponivel = true;
+>SELECT * FROM APARELHO
+    WHERE (marca = 'Philips' OR marca = 'Siemens')
+      AND disponivel = true;
 
 >a) Confibialidade acima de 0,9 dos exames tirando a patologia 2
 
