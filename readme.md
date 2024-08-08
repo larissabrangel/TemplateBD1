@@ -476,12 +476,13 @@ WHERE disponivel = true;
 
 ![image](https://github.com/user-attachments/assets/68a47951-ea9f-42cf-92f0-05b98039b03f)
 
->Exemplo 2: Filtrar casos mais graves, acima de 4
+>Exemplo 2: Filtrar exames onde há patologias
 
-SELECT * FROM PATOLOGIA
-WHERE nivel_gravidade >= 4;
+SELECT * FROM REGISTRO_EXAME
+WHERE condicaoEhPatologica = true;
 
-![image](https://github.com/user-attachments/assets/949677de-7a39-4ab2-baf0-cd36facafadf)
+![image](https://github.com/user-attachments/assets/0aef2e91-2ca4-43b9-a127-b8849c64a84a)
+
 
 >Exemplo 3: Filtrar exames feitos em certo intervalo de tempo
 
