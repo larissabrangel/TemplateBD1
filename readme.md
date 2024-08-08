@@ -288,8 +288,7 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
     (13, 76543219876, 'Dr. Lewis', true),
     (14, 65432108765, 'Dra. Clark', true),
     (15, 54321097654, 'Dr. Lee', false);
-    
-    
+        
     INSERT INTO PATOLOGIA (codigo, nome, nivel_gravidade) VALUES
     (1, 'Saúde Normal', 1),
     (2, 'Bronquite', 2),
@@ -340,8 +339,7 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
     (13, 'https://vwx234.png', 11),
     (14, 'https://yz567.png', 13),
     (15, 'https://123abc.png', 6);
-    
-    
+        
     INSERT INTO EXAME (codigo, data_hora_realizacao, fk_paciente_codigo, fk_aparelho_codigo) VALUES
     (1, '2024-08-01 08:30:00', 1, 3),
     (2, '2024-08-02 09:00:00', 2, 5),
@@ -465,36 +463,36 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 
 
 ### 8.	TABELAS E PRINCIPAIS CONSULTAS<br>
-    OBS: Usa template da disciplina disponibilizado no Colab.<br>
+    colocar o link do colab <br>
 #### 8.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 
 #### 8.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
 >Exemplo 1: Filtrar aparelhos disponíveis
 
-SELECT * FROM APARELHO
-WHERE disponivel = true;
+    SELECT * FROM APARELHO
+    WHERE disponivel = true;
 
 ![image](https://github.com/user-attachments/assets/68a47951-ea9f-42cf-92f0-05b98039b03f)
 
 >Exemplo 2: Filtrar exames onde há patologias
-
-SELECT * FROM REGISTRO_EXAME
-WHERE condicaoEhPatologica = true;
+    
+    SELECT * FROM REGISTRO_EXAME
+    WHERE condicaoEhPatologica = true;
 
 ![image](https://github.com/user-attachments/assets/0aef2e91-2ca4-43b9-a127-b8849c64a84a)
 
 
 >Exemplo 3: Filtrar exames feitos em certo intervalo de tempo
 
-SELECT * FROM EXAME
-WHERE data_hora_realizacao BETWEEN '2024-08-01 00:00:00' AND '2024-08-05 23:59:59';
+    SELECT * FROM EXAME
+    WHERE data_hora_realizacao BETWEEN '2024-08-01 00:00:00' AND '2024-08-05 23:59:59';
 
 ![image](https://github.com/user-attachments/assets/38fe0f13-0c65-4fc9-a806-c81100a534cb)
 
 >Exemplo 4: Filtrar radiologistas disponíveis
 
-SELECT * FROM RADIOLOGISTA
-WHERE disponivel = true;
+    SELECT * FROM RADIOLOGISTA
+    WHERE disponivel = true;
 
 ![image](https://github.com/user-attachments/assets/eac3598f-1d23-4cd5-9317-5b80a55ea877)
 
