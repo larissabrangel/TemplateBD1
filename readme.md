@@ -612,6 +612,12 @@ where nome ilike 'Ana%';
 >select * from exame
 where to_char(data_hora_realizacao, 'MM') like '01';
 
+>select * from paciente
+where id like 'ID__7%';
+
+>select * from radiologista
+where nome ilike '% lee' or nome ilike '% johnson';
+
 >
 
     b) Criar uma consulta para cada tipo de função data apresentada.
