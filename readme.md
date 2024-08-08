@@ -467,14 +467,14 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 #### 8.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 
 #### 8.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
->Exemplo 1: Filtrar aparelhos disponíveis
+>Consulta 1: Filtrar aparelhos disponíveis:
 
     SELECT * FROM APARELHO
     WHERE disponivel = true;
 
 ![image](https://github.com/user-attachments/assets/68a47951-ea9f-42cf-92f0-05b98039b03f)
 
->Exemplo 2: Filtrar exames onde há patologias
+>Consulta 2: Filtrar exames onde há patologias:
     
     SELECT * FROM REGISTRO_EXAME
     WHERE condicaoEhPatologica = true;
@@ -482,14 +482,14 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 ![image](https://github.com/user-attachments/assets/0aef2e91-2ca4-43b9-a127-b8849c64a84a)
 
 
->Exemplo 3: Filtrar exames feitos em certo intervalo de tempo
+>Consulta 3: Filtrar exames feitos em certo intervalo de tempo:
 
     SELECT * FROM EXAME
     WHERE data_hora_realizacao BETWEEN '2024-08-01 00:00:00' AND '2024-08-05 23:59:59';
 
 ![image](https://github.com/user-attachments/assets/38fe0f13-0c65-4fc9-a806-c81100a534cb)
 
->Exemplo 4: Filtrar radiologistas disponíveis
+>Consulta 4: Filtrar radiologistas disponíveis:
 
     SELECT * FROM RADIOLOGISTA
     WHERE disponivel = true;
@@ -504,119 +504,120 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
     b) Criar no mínimo 3 consultas com operadores aritméticos
     c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
     
->a) Marcas específicas disponíveis
+>a) Marcas específicas disponíveis:
 
-select * from aparelho
-where (marca = 'philips' or marca = 'siemens')
-  and disponivel = true;
+    select * from aparelho
+    where (marca = 'philips' or marca = 'siemens')
+      and disponivel = true;
 
->a) Confiabilidade acima de 0,9 dos exames, exceto a patologia 2
+>a) Confiabilidade acima de 0,9 dos exames, exceto a patologia 2:
 
-select * from predicao
-where confiabilidade > 0.9
-  and not fk_patologia_codigo = 2;
+    select * from predicao
+    where confiabilidade > 0.9
+      and not fk_patologia_codigo = 2;
 
->a) Exames realizados após data ou por algum aparelho específico
+>a) Exames realizados após data ou por algum aparelho específico:
 
-select * from exame
-where data_hora_realizacao > '2024-08-07'
-  or fk_aparelho_codigo = 7;
+    select * from exame
+    where data_hora_realizacao > '2024-08-07'
+      or fk_aparelho_codigo = 7;
 
->a) Exames onde condições são patológicas depois de alguma data
+>a) Exames onde condições são patológicas depois de alguma data:
 
-select * from registro_exame
-where condicaoehpatologica = true
-  and data_hora_geracao > '2024-08-02';
+    select * from registro_exame
+    where condicaoehpatologica = true
+      and data_hora_geracao > '2024-08-02';
 
->a) Exames onde não possuem condições patológicas
+>a) Exames onde não possuem condições patológicas:
 
-select * from registro_exame
-where not condicaoehpatologica = true;
+    select * from registro_exame
+    where not condicaoehpatologica = true;
 
->b) Calcular idade dos pacientes
+>b) Calcular idade dos pacientes:
 
-select nome, extract(year from age(current_date, data_nasc)) as idade
-from paciente;
+    select nome, extract(year from age(current_date, data_nasc)) as idade
+    from paciente;
 
->b) Porcentagem da confiabilidade dos exames
+>b) Porcentagem da confiabilidade dos exames:
 
-select codigo, fk_patologia_codigo, fk_registro_exame_codigo, confiabilidade, 
-    confiabilidade * 100 as confiabilidade_porcentagem
-from predicao;
+    select codigo, fk_patologia_codigo, fk_registro_exame_codigo, confiabilidade, 
+        confiabilidade * 100 as confiabilidade_porcentagem
+    from predicao;
 
->b) Média da confiabilidade dos exames
+>b) Média da confiabilidade dos exames:
 
-select 
-    avg(confiabilidade) as media_confiabilidade
-from 
-    predicao;
->c) Renomear coluna de data_nasc para data_nascimento na tabela paciente
+    select 
+        avg(confiabilidade) as media_confiabilidade
+    from 
+        predicao;
+        
+>c) Renomear coluna de data_nasc para data_nascimento na tabela paciente:
 
-alter table paciente
-rename column data_nasc to data_nascimento;
+    alter table paciente
+    rename column data_nasc to data_nascimento;
 
->c) Renomear tabela aparelho para equipamento
+>c) Renomear tabela aparelho para equipamento:
 
-alter table aparelho
-rename to equipamento;
+    alter table aparelho
+    rename to equipamento;
 
->c) Renomear coluna de nome para nome_completo na tabela radiologista
+>c) Renomear coluna de nome para nome_completo na tabela radiologista:
 
-alter table radiologista
-rename column nome to nome_completo;
+    alter table radiologista
+    rename column nome to nome_completo;
 
 
 #### 8.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
 
->select * from aparelho
-where marca like 'S%';
+    >select * from aparelho
+    where marca like 'S%';
 
->select * from exame
-where to_char(data_hora_realizacao, 'YYYY') like '2024%';
+    >select * from exame
+    where to_char(data_hora_realizacao, 'YYYY') like '2024%';
 
->select * from exame
-where data_hora_realizacao::text like '2024-07%';
+    >select * from exame
+    where data_hora_realizacao::text like '2024-07%';
 
->select * from paciente
-where nome like 'joão%';
-
->select * from radiologista
-where nome like 'dr.%';
-
->select * from patologia
-where nome like '%ite';
-
->select * from paciente
-where nome like '_____';
-
->select * from exame
-where data_hora_realizacao::text like '____-08-07%';
-
->select * from patologia
-where nome not like '%e%';
-
->select * from exame
-where data_hora_realizacao::text like '____-__-13%';
-
->select * from exame
-where data_hora_realizacao::text like '____-08-%';
-
->select * from paciente
-where data_nasc::text like '2001%';
+    >select * from paciente
+    where nome like 'joão%';
+    
+    >select * from radiologista
+    where nome like 'dr.%';
+    
+    >select * from patologia
+    where nome like '%ite';
+    
+    >select * from paciente
+    where nome like '_____';
+    
+    >select * from exame
+    where data_hora_realizacao::text like '____-08-07%';
+    
+    >select * from patologia
+    where nome not like '%e%';
+    
+    >select * from exame
+    where data_hora_realizacao::text like '____-__-13%';
+    
+    >select * from exame
+    where data_hora_realizacao::text like '____-08-%';
+    
+    >select * from paciente
+    where data_nasc::text like '2001%';
 
     a) Criar outras 5 consultas que envolvam like ou ilike
     
->select * from paciente
-where nome ilike 'Ana%';
-
->select * from exame
-where to_char(data_hora_realizacao, 'MM') like '01';
-
->select * from paciente
-where id like 'ID__7%';
-
->select * from radiologista
-where nome ilike '% lee' or nome ilike '% johnson';
+    >select * from paciente
+    where nome ilike 'Ana%';
+    
+    >select * from exame
+    where to_char(data_hora_realizacao, 'MM') like '01';
+    
+    >select * from paciente
+    where id like 'ID__7%';
+    
+    >select * from radiologista
+    where nome ilike '% lee' or nome ilike '% johnson';
 
 >
 
