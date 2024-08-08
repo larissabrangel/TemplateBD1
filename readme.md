@@ -506,63 +506,68 @@ WHERE disponivel = true;
     b) Criar no mínimo 3 consultas com operadores aritméticos
     c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
     
-a) Marcas especificas disponíveis
+-- a) Marcas específicas disponíveis
+select * from aparelho
+where (marca = 'philips' or marca = 'siemens')
+  and disponivel = true;
 
->SELECT * FROM APARELHO
-    WHERE (marca = 'Philips' OR marca = 'Siemens')
-      AND disponivel = true;
+-- a) Confiabilidade acima de 0,9 dos exames, exceto a patologia 2
+select * from predicao
+where confiabilidade > 0.9
+  and not fk_patologia_codigo = 2;
 
-a) Confibialidade acima de 0,9 dos exames tirando a patologia 2
+-- a) Exames realizados após data ou por algum aparelho específico
+select * from exame
+where data_hora_realizacao > '2024-08-07'
+  or fk_aparelho_codigo = 7;
 
->SELECT * FROM PREDICAO
-WHERE confiabilidade > 0.9
-  AND NOT fk_patologia_codigo = 2;
+-- a) Exames onde condições são patológicas depois de alguma data
+select * from registro_exame
+where condicaoehpatologica = true
+  and data_hora_geracao > '2024-08-02';
 
-a) Exames realizados após data ou por algum aparelho específico
+-- a) Exames onde não possuem condições patológicas
+select * from registro_exame
+where not condicaoehpatologica = true;
 
->SELECT * FROM EXAME
-WHERE data_hora_realizacao > '2024-08-07'
-  OR fk_aparelho_codigo = 7;
+-- b) Calcular idade dos pacientes
+select nome, extract(year from age(current_date, data_nasc)) as idade
+from paciente;
 
-a) Exames onde condições são patologicas depois de alguma data
+-- b) Porcentagem da confiabilidade dos exames
+select codigo, fk_patologia_codigo, fk_registro_exame_codigo, confiabilidade, 
+    confiabilidade * 100 as confiabilidade_porcentagem
+from predicao;
 
->SELECT * FROM REGISTRO_EXAME
-WHERE condicaoEhPatologica = true
-  AND data_hora_geracao > '2024-08-02';
+-- b) Média da confiabilidade dos exames
+select 
+    avg(confiabilidade) as media_confiabilidade
+from 
+    predicao;
 
-a) Exames onde não possuem condições patologicas
+-- c) Renomear coluna de data_nasc para data_nascimento na tabela paciente
+alter table paciente
+rename column data_nasc to data_nascimento;
 
->SELECT * FROM REGISTRO_EXAME
-WHERE NOT condicaoEhPatologica = true;
+-- c) Renomear tabela aparelho para equipamento
+alter table aparelho
+rename to equipamento;
 
-b) Calcular idade dos pacientes
+-- c) Renomear coluna de nome para nome_completo na tabela radiologista
+alter table radiologista
+rename column nome to nome_completo;
 
->SELECT nome, EXTRACT(YEAR FROM AGE(CURRENT_DATE, data_nasc)) AS idade
-FROM PACIENTE;
-
-b) Porcentagem da confiabilidade dos exames
-
->SELECT codigo, fk_patologia_codigo, fk_registro_exame_codigo, confiabilidade, 
-    confiabilidade * 100 AS confiabilidade_porcentagem
-FROM PREDICAO;
-
-b) Média da confiabilidade dos exames
-
->SELECT 
-    AVG(confiabilidade) AS media_confiabilidade
-FROM 
-    PREDICAO;
-
-c) ALTER TABLE PACIENTE
->RENAME COLUMN data_nasc TO data_nascimento;
-
-c) ALTER TABLE APARELHO
->RENAME TO EQUIPAMENTO;
-
-c) ALTER TABLE RADIOLOGISTA
->RENAME COLUMN nome TO nome_completo;
 
 #### 8.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
+
+>SELECT * FROM APARELHO
+WHERE marca LIKE 'S%';
+
+>SELECT * FROM EXAME
+WHERE TO_CHAR(data_hora_realizacao, 'YYYY') LIKE '2024%';
+
+>
+
     a) Criar outras 5 consultas que envolvam like ou ilike
     b) Criar uma consulta para cada tipo de função data apresentada.
 
