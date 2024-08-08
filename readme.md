@@ -476,6 +476,29 @@ WHERE disponivel = true;
 
 ![image](https://github.com/user-attachments/assets/68a47951-ea9f-42cf-92f0-05b98039b03f)
 
+>Exemplo 2: Filtrar casos mais graves, acima de 4
+
+SELECT * FROM PATOLOGIA
+WHERE nivel_gravidade >= 4;
+
+![image](https://github.com/user-attachments/assets/949677de-7a39-4ab2-baf0-cd36facafadf)
+
+>Exemplo 3: Filtrar exames feitos em certo intervalo de tempo
+
+SELECT * FROM EXAME
+WHERE data_hora_realizacao BETWEEN '2024-08-01 00:00:00' AND '2024-08-05 23:59:59';
+
+![image](https://github.com/user-attachments/assets/38fe0f13-0c65-4fc9-a806-c81100a534cb)
+
+>Exemplo 4: Filtrar radiologistas disponíveis
+
+SELECT * FROM RADIOLOGISTA
+WHERE disponivel = true;
+
+![image](https://github.com/user-attachments/assets/eac3598f-1d23-4cd5-9317-5b80a55ea877)
+
+
+
 
 #### 8.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
