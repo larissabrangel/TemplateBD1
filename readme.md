@@ -512,55 +512,55 @@ a) Marcas especificas disponíveis
     WHERE (marca = 'Philips' OR marca = 'Siemens')
       AND disponivel = true;
 
->a) Confibialidade acima de 0,9 dos exames tirando a patologia 2
+a) Confibialidade acima de 0,9 dos exames tirando a patologia 2
 
-SELECT * FROM PREDICAO
+>SELECT * FROM PREDICAO
 WHERE confiabilidade > 0.9
   AND NOT fk_patologia_codigo = 2;
 
->a) Exames realizados após data ou por algum aparelho específico
+a) Exames realizados após data ou por algum aparelho específico
 
-SELECT * FROM EXAME
+>SELECT * FROM EXAME
 WHERE data_hora_realizacao > '2024-08-07'
   OR fk_aparelho_codigo = 7;
 
->a) Exames onde condições são patologicas depois de alguma data
+a) Exames onde condições são patologicas depois de alguma data
 
-SELECT * FROM REGISTRO_EXAME
+>SELECT * FROM REGISTRO_EXAME
 WHERE condicaoEhPatologica = true
   AND data_hora_geracao > '2024-08-02';
 
->a) Exames onde não possuem condições patologicas
+a) Exames onde não possuem condições patologicas
 
-SELECT * FROM REGISTRO_EXAME
+>SELECT * FROM REGISTRO_EXAME
 WHERE NOT condicaoEhPatologica = true;
 
->b) Calcular idade dos pacientes
+b) Calcular idade dos pacientes
 
-SELECT nome, EXTRACT(YEAR FROM AGE(CURRENT_DATE, data_nasc)) AS idade
+>SELECT nome, EXTRACT(YEAR FROM AGE(CURRENT_DATE, data_nasc)) AS idade
 FROM PACIENTE;
 
->b) Porcentagem da confiabilidade dos exames
+b) Porcentagem da confiabilidade dos exames
 
-SELECT codigo, fk_patologia_codigo, fk_registro_exame_codigo, confiabilidade, 
+>SELECT codigo, fk_patologia_codigo, fk_registro_exame_codigo, confiabilidade, 
     confiabilidade * 100 AS confiabilidade_porcentagem
 FROM PREDICAO;
 
->b) Média da confiabilidade dos exames
+b) Média da confiabilidade dos exames
 
-SELECT 
+>SELECT 
     AVG(confiabilidade) AS media_confiabilidade
 FROM 
     PREDICAO;
 
->c) ALTER TABLE PACIENTE
-RENAME COLUMN data_nasc TO data_nascimento;
+c) ALTER TABLE PACIENTE
+>RENAME COLUMN data_nasc TO data_nascimento;
 
->c) ALTER TABLE APARELHO
-RENAME TO EQUIPAMENTO;
+c) ALTER TABLE APARELHO
+>RENAME TO EQUIPAMENTO;
 
->c) ALTER TABLE RADIOLOGISTA
-RENAME COLUMN nome TO nome_completo;
+c) ALTER TABLE RADIOLOGISTA
+>RENAME COLUMN nome TO nome_completo;
 
 #### 8.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
     a) Criar outras 5 consultas que envolvam like ou ilike
