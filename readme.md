@@ -32,7 +32,8 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
     
 ### 4. MODELO CONCEITUAL<br> 
         
-![BD_PACIENTES_CONCEITUAL](https://github.com/user-attachments/assets/d87b6dde-fbf2-40aa-b569-c9f37886fc47)
+![image](https://github.com/user-attachments/assets/10e24bad-b67c-48fc-90ff-5de4a7876789)
+
 
 
     
