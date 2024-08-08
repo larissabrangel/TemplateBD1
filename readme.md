@@ -574,9 +574,46 @@ where marca like 'S%';
 >select * from exame
 where to_char(data_hora_realizacao, 'YYYY') like '2024%';
 
->
+>select * from exame
+where data_hora_realizacao::text like '2024-07%';
+
+>select * from paciente
+where nome like 'joão%';
+
+>select * from radiologista
+where nome like 'dr.%';
+
+>select * from patologia
+where nome like '%ite';
+
+>select * from paciente
+where nome like '_____';
+
+>select * from exame
+where data_hora_realizacao::text like '____-08-07%';
+
+>select * from patologia
+where nome not like '%e%';
+
+>select * from exame
+where data_hora_realizacao::text like '____-__-13%';
+
+>select * from exame
+where data_hora_realizacao::text like '____-08-%';
+
+>select * from paciente
+where data_nasc::text like '2001%';
 
     a) Criar outras 5 consultas que envolvam like ou ilike
+    
+>select * from paciente
+where nome ilike 'Ana%';
+
+>select * from exame
+where to_char(data_hora_realizacao, 'MM') like '01';
+
+>
+
     b) Criar uma consulta para cada tipo de função data apresentada.
 
 ># Marco de Entrega 02: Do item 6. até o item 9.1 (5 PTS) <br>
