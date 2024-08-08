@@ -631,7 +631,21 @@ where nivel_gravidade::text like '3%'
 
 #### 8.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
     a) Criar minimo 3 de exclusão
+
+>delete from paciente where nome ilike 'joao%';
+
+>delete from exame where data_hora_realizacao::text like '2024-08-05%';
+
+>delete from patologia where nome like '%ite';
+
     b) Criar minimo 3 de atualização
+    
+>update radiologista set nome = 'Dra. Lexie Grey' where nome ilike 'dra. Grey%';
+
+>update aparelho set marca = 'Toyota' where marca like 'Samsung%';
+
+>update patologia set nivel_gravidade = 5 where codigo = 9;
+
 
 #### 8.6	CONSULTAS COM INNER JOIN E ORDER BY (Mínimo 6)<br>
     a) Uma junção que envolva todas as tabelas possuindo no mínimo 2 registros no resultado
