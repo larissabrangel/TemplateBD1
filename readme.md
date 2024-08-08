@@ -569,54 +569,54 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 
 #### 8.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
 
-    >select * from aparelho
-    where marca like 'S%';
+>select * from aparelho
+ where marca like 'S%';
 
-    >select * from exame
-    where to_char(data_hora_realizacao, 'YYYY') like '2024%';
+>select * from exame
+ where to_char(data_hora_realizacao, 'YYYY') like '2024%';
 
-    >select * from exame
-    where data_hora_realizacao::text like '2024-07%';
+>select * from exame
+ where data_hora_realizacao::text like '2024-07%';
 
-    >select * from paciente
-    where nome like 'joão%';
+>select * from paciente
+ where nome like 'joão%';
     
-    >select * from radiologista
+>select * from radiologista
     where nome like 'dr.%';
     
-    >select * from patologia
+>select * from patologia
     where nome like '%ite';
     
-    >select * from paciente
+>select * from paciente
     where nome like '_____';
     
-    >select * from exame
+ >select * from exame
     where data_hora_realizacao::text like '____-08-07%';
     
-    >select * from patologia
+>select * from patologia
     where nome not like '%e%';
     
-    >select * from exame
+>select * from exame
     where data_hora_realizacao::text like '____-__-13%';
     
-    >select * from exame
+>select * from exame
     where data_hora_realizacao::text like '____-08-%';
     
-    >select * from paciente
+>select * from paciente
     where data_nasc::text like '2001%';
 
     a) Criar outras 5 consultas que envolvam like ou ilike
     
-    >select * from paciente
+>select * from paciente
     where nome ilike 'Ana%';
     
-    >select * from exame
+>select * from exame
     where to_char(data_hora_realizacao, 'MM') like '01';
     
-    >select * from paciente
+>select * from paciente
     where id like 'ID__7%';
     
-    >select * from radiologista
+>select * from radiologista
     where nome ilike '% lee' or nome ilike '% johnson';
 
 >select * from patologia
