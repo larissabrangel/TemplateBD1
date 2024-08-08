@@ -100,7 +100,7 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 
 
 ### 6.	MODELO FÍSICO<br>
-/* BD_PACIENTES_LOGICO: */
+    /* BD_PACIENTES_LOGICO: */
 
     CREATE TABLE IF NOT EXISTS PACIENTE (
         codigo SERIAL PRIMARY KEY,
