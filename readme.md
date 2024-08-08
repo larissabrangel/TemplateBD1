@@ -619,7 +619,10 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
     >select * from radiologista
     where nome ilike '% lee' or nome ilike '% johnson';
 
->
+>select * from patologia
+where nivel_gravidade::text like '3%' 
+   or nivel_gravidade::text like '4%' 
+   or nivel_gravidade::text like '5%';
 
     b) Criar uma consulta para cada tipo de função data apresentada.
 
