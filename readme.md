@@ -21,11 +21,11 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 
 * Relatório 1: Exames Realizados por Paciente. Objetivo: Obter um relatório que mostre o nome de cada paciente e a quantidade total de exames realizados por ele.
 
-* Relatório 2: Patologias Diagnósticas com Maior Frequência. Objetivo: Identificar quais patologias são mais frequentemente diagnosticadas.
+* Relatório 2: Frequência de cada patologia. Objetivo: Identificar a quantidade de ocorrências de cada patologia.
 
 * Relatório 3: Radiologistas e Seus Exames Realizados. Objetivo: Listar cada radiologista e a quantidade total de exames realizados por ele.
 
-* Relatório 4: Patologias e Seus Níveis de Gravidade Médios. Objetivo: Calcular o nível de gravidade médio das patologias diagnosticadas.
+* Relatório 4: Média de confiabilidade das predições por patologia. Objetivo: Calcular média de confiabilidade das predições para cada patologia.
 
 * Relatório 5: Frequência de Exames por Aparelho. Objetivo: Determinar a quantidade de exames realizados por cada tipo de aparelho para avaliar a frequência de uso e identificar quais equipamentos são mais requisitados.
 
@@ -651,8 +651,8 @@ where nome ilike '% lee' or nome ilike '% johnson';
 ### 9. RELATÓRIOS E GRÁFICOS
 
 #### a) análises e resultados provenientes do banco de dados desenvolvido (usar modelo disponível)
-#### b) link com exemplo de relatórios será disponiblizado pelo professor no AVA
-#### OBS: Esta é uma atividade de grande relevância no contexto do trabalho. Mantenha o foco nos 5 principais relatórios/resultados visando obter o melhor resultado possível.
+<br> https://colab.research.google.com/drive/1K6RYt6ttdqUouDLNsyD8BWW2p1R9EshP?usp=sharing <br>
+
 
     
 
