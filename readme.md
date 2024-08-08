@@ -469,7 +469,8 @@ INSERT INTO PATOLOGIA_LAUDO (codigo, fk_laudo_codigo, fk_patologia_codigo) VALUE
 #### 8.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 
 #### 8.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
-Exemplo 1: Filtrar aparelhos disponíveis
+>Exemplo 1: Filtrar aparelhos disponíveis
+
 SELECT * FROM APARELHO
 WHERE disponivel = true;
 
