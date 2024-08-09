@@ -793,7 +793,7 @@ Quantidade de laudos por patologia
 
 #### 8.8	CONSULTAS COM LEFT, RIGHT E FULL JOIN <br>
 
-Identificar quais exames já possuem seu registro e laudo completos, ou seja, que não está na espera dos resultados
+Identificar quais exames já possuem seu registro e laudo completos, ou seja, que não estão na espera dos resultados
 
     SELECT
         e.codigo as IDExame,
