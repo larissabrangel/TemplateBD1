@@ -727,6 +727,25 @@ order by la.data_hora_geracao, pa.nome;
 
 #### 8.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
     a) Criar minimo 2 envolvendo algum tipo de junção
+    
+Quantidade de exames por radiologista
+
+>select 
+    r.nome as radiologista_nome,
+    count(la.codigo) as total_exames
+from radiologista r
+inner join laudo la on r.codigo = la.fk_radiologista_codigo
+group by r.nome;
+
+Número de exames realizados por mês
+
+>select 
+    to_char(e.data_hora_realizacao, 'YYYY-MM') as mes,
+    count(e.codigo) as total_exames
+from exame e
+group by to_char(e.data_hora_realizacao, 'YYYY-MM')
+order by mes;
+
 
 #### 8.8	CONSULTAS COM LEFT, RIGHT E FULL JOIN (Mínimo 4)<br>
     a) Criar minimo 1 de cada tipo
