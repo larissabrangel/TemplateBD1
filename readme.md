@@ -746,13 +746,70 @@ from exame e
 group by to_char(e.data_hora_realizacao, 'YYYY-MM')
 order by mes;
 
+Número de pacientes por ano de nascimento
+
+>select 
+    extract(year from p.data_nasc) as ano_nascimento,
+    count(p.codigo) as total_pacientes
+from paciente p
+group by extract(year from p.data_nasc)
+order by ano_nascimento;
+
+Quantidade de predições por exame
+
+>select e.codigo as exame_codigo,
+count(pr.codigo) as total_predicoes
+from exame e
+left join predicao pr on e.codigo = pr.fk_registro_exame_codigo
+group by e.codigo
+order by total_predicoes desc;
+
+Quantidade de laudos por patologia
+
+>select p.nome as patologia, count( pl.codigo) as total_laudos from patologia p
+join patologia_laudo pl on p.codigo = pl.fk_patologia_codigo group by p.nome
+order by total_laudos desc;
 
 #### 8.8	CONSULTAS COM LEFT, RIGHT E FULL JOIN (Mínimo 4)<br>
-    a) Criar minimo 1 de cada tipo
+
 
 #### 8.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
-        a) Uma junção que envolva Self Join (caso não ocorra na base justificar e substituir por uma view)
-        b) Outras junções com views que o grupo considere como sendo de relevante importância para o trabalho
+
+>CREATE VIEW ExameDetalhado AS
+SELECT
+    e.codigo AS ExameCodigo,
+    e.data_hora_realizacao AS DataRealizacao,
+    pa.nome AS NomePaciente,
+    a.marca AS MarcaAparelho,
+    r.nome AS NomeRadiologista,
+    (SELECT COUNT(*)
+     FROM patologia_laudo pl
+     JOIN patologia p ON pl.fk_patologia_codigo = p.codigo
+     WHERE pl.fk_laudo_codigo = l.codigo) AS TotalPatologias
+FROM
+    exame e
+LEFT JOIN
+    paciente pa ON e.fk_paciente_codigo = pa.codigo
+LEFT JOIN
+    aparelho a ON e.fk_aparelho_codigo = a.codigo
+LEFT JOIN
+    laudo l ON l.fk_exame_codigo = e.codigo
+LEFT JOIN
+    radiologista r ON l.fk_radiologista_codigo = r.codigo;
+
+SELECT * FROM ExameDetalhado;
+
+
+>SELECT
+    e.codigo as IDExame,
+    re.codigo as IDRegistroExame,
+    l.codigo as IDLaudo
+FROM exame e
+LEFT JOIN registro_exame re
+ON e.codigo = re.fk_exame_codigo
+LEFT JOIN laudo l
+ON e.codigo = l.fk_exame_codigo
+
 
 #### 8.10	SUBCONSULTAS (Mínimo 4)<br>
      a) Criar minimo 1 envolvendo GROUP BY
