@@ -793,16 +793,19 @@ Quantidade de laudos por patologia
 
 #### 8.8	CONSULTAS COM LEFT, RIGHT E FULL JOIN <br>
 
-Pacientes e seus exames
+Identificar quais exames já possuem seu registro e laudo completos, ou seja, que não está na espera dos resultados
 
-    select 
-    p.nome as paciente_nome,
-    e.data_hora_realizacao as exame_data
-    from paciente p
-    left join exame e on p.codigo = e.fk_paciente_codigo
-    order by p.nome;
+    SELECT
+        e.codigo as IDExame,
+        re.codigo as IDRegistroExame,
+        l.codigo as IDLaudo
+    FROM exame e
+    LEFT JOIN registro_exame re
+    ON e.codigo = re.fk_exame_codigo
+    LEFT JOIN laudo l
+    ON e.codigo = l.fk_exame_codigo
 
-Exames e os aparelhos utilizados
+Exames e os seus aparelhos utilizados
 
     select 
         e.codigo as exame_codigo,
@@ -811,7 +814,7 @@ Exames e os aparelhos utilizados
     right join aparelho a on e.fk_aparelho_codigo = a.codigo
     order by e.codigo;
 
-Radiologistas e laudos gerados
+Radiologistas e seus laudos gerados
 
     select 
         r.nome as radiologista_nome,
@@ -832,16 +835,7 @@ Patologias identificadas em predições
 
 #### 8.9	CONSULTA COM SELF JOIN E VIEW <br>
 
-    SELECT
-        e.codigo as IDExame,
-        re.codigo as IDRegistroExame,
-        l.codigo as IDLaudo
-    FROM exame e
-    LEFT JOIN registro_exame re
-    ON e.codigo = re.fk_exame_codigo
-    LEFT JOIN laudo l
-    ON e.codigo = l.fk_exame_codigo
-
+Exame detalhado
 
     CREATE VIEW ExameDetalhado AS
     SELECT
@@ -866,6 +860,26 @@ Patologias identificadas em predições
         radiologista r ON l.fk_radiologista_codigo = r.codigo;
     
     SELECT * FROM ExameDetalhado;
+
+Total de exames realizados por cada radiologista
+
+    CREATE VIEW ExamesPorRadiologista AS
+        SELECT
+            r.nome AS NomeRadiologista,
+            COUNT(e.codigo) AS TotalExames
+        FROM
+            radiologista r
+        LEFT JOIN
+            laudo l ON r.codigo = l.fk_radiologista_codigo
+        LEFT JOIN
+            exame e ON l.fk_exame_codigo = e.codigo
+        GROUP BY
+            r.nome;
+    
+    -- Consultar a view para ver os resultados
+    SELECT * FROM ExamesPorRadiologista;
+
+
 
 #### 8.7	SUBCONSULTAS <br>
 
