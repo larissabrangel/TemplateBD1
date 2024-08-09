@@ -607,7 +607,7 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
     where data_nasc::text like '2001%';
 
     a) Criar outras 5 consultas que envolvam like ou ilike
-    
+    b) Criar uma consulta para cada tipo de função data apresentada.    
 >select * from paciente
     where nome ilike 'Ana%';
     
@@ -625,7 +625,6 @@ where nivel_gravidade::text like '3%'
    or nivel_gravidade::text like '4%' 
    or nivel_gravidade::text like '5%';
 
-    b) Criar uma consulta para cada tipo de função data apresentada.
 
 ># Marco de Entrega 02: Do item 6. até o item 9.1 (5 PTS) <br>
 
