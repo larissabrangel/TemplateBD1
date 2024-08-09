@@ -237,8 +237,7 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
     (13, 21098765400, 'Chewbacca', '0007-09-07', 'ID9091'),
     (14, 10987654300, 'Pikachu', '1996-02-27', 'ID9293'),
     (15, 09876543200, 'Smeagol', '2430-03-14', 'ID9495');
-    
-    
+        
     INSERT INTO APARELHO (codigo, marca, disponivel) VALUES
     (1, 'Philips', true),
     (2, 'Siemens', false),
@@ -464,11 +463,9 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 
 
 ### 8.	TABELAS E PRINCIPAIS CONSULTAS<br>
-    Link colab: 
-https://colab.research.google.com/drive/19KaUKHYjk2WrfzGlfKl_lRcUl4wYqiIR?usp=sharing
-#### 8.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
+[***Link colab.***](https://colab.research.google.com/drive/19KaUKHYjk2WrfzGlfKl_lRcUl4wYqiIR?usp=sharing)     
 
-#### 8.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
+#### 8.1	CONSULTAS DAS TABELAS COM FILTROS WHERE <br>
 >Consulta 1: Filtrar aparelhos disponíveis:
 
     SELECT * FROM APARELHO
@@ -498,337 +495,356 @@ https://colab.research.google.com/drive/19KaUKHYjk2WrfzGlfKl_lRcUl4wYqiIR?usp=sh
 
 ![image](https://github.com/user-attachments/assets/eac3598f-1d23-4cd5-9317-5b80a55ea877)
 
-
-
-
-#### 8.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
-    a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
-    b) Criar no mínimo 3 consultas com operadores aritméticos
-    c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
+#### 8.2	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS 
     
 >a) Marcas específicas disponíveis:
 
-    select * from aparelho
-    where (marca = 'philips' or marca = 'siemens')
-      and disponivel = true;
+    SELECT *
+    FROM aparelho
+    WHERE (marca = 'philips'
+           OR marca = 'siemens')
+        AND disponivel = TRUE;
 
 >a) Confiabilidade acima de 0,9 dos exames, exceto a patologia 2:
 
-    select * from predicao
-    where confiabilidade > 0.9
-      and not fk_patologia_codigo = 2;
+    SELECT *
+    FROM predicao
+    WHERE confiabilidade > 0.9
+        AND NOT fk_patologia_codigo = 2;
 
 >a) Exames realizados após data ou por algum aparelho específico:
 
-    select * from exame
-    where data_hora_realizacao > '2024-08-07'
-      or fk_aparelho_codigo = 7;
+    SELECT *
+    FROM exame
+    WHERE data_hora_realizacao > '2024-08-07'
+        OR fk_aparelho_codigo = 7;
 
 >a) Exames onde condições são patológicas depois de alguma data:
 
-    select * from registro_exame
-    where condicaoehpatologica = true
-      and data_hora_geracao > '2024-08-02';
+    SELECT *
+    FROM registro_exame
+    WHERE condicaoehpatologica = TRUE
+        AND data_hora_geracao > '2024-08-02';
 
 >a) Exames onde não possuem condições patológicas:
 
-    select * from registro_exame
-    where not condicaoehpatologica = true;
+    SELECT *
+    FROM registro_exame
+    WHERE NOT condicaoehpatologica = TRUE;
 
 >b) Calcular idade dos pacientes:
 
-    select nome, extract(year from age(current_date, data_nasc)) as idade
-    from paciente;
+    SELECT nome,
+           extract(YEAR
+                   FROM age(CURRENT_DATE, data_nasc)) AS idade
+    FROM paciente;
 
 >b) Porcentagem da confiabilidade dos exames:
-
-    select codigo, fk_patologia_codigo, fk_registro_exame_codigo, confiabilidade, 
-        confiabilidade * 100 as confiabilidade_porcentagem
-    from predicao;
+    
+    SELECT codigo,
+           fk_patologia_codigo,
+           fk_registro_exame_codigo,
+           confiabilidade,
+           confiabilidade * 100 AS confiabilidade_porcentagem
+    FROM predicao;
 
 >b) Média da confiabilidade dos exames:
-
-    select 
-        avg(confiabilidade) as media_confiabilidade
-    from 
-        predicao;
+    
+    SELECT avg(confiabilidade) AS media_confiabilidade
+    FROM predicao;
         
 >c) Renomear coluna de data_nasc para data_nascimento na tabela paciente:
 
-    alter table paciente
-    rename column data_nasc to data_nascimento;
+    ALTER TABLE paciente 
+    RENAME COLUMN data_nasc TO data_nascimento;
 
 >c) Renomear tabela aparelho para equipamento:
-
-    alter table aparelho
-    rename to equipamento;
+    
+    ALTER TABLE aparelho 
+    RENAME TO equipamento;
 
 >c) Renomear coluna de nome para nome_completo na tabela radiologista:
+    
+    ALTER TABLE radiologista 
+    RENAME COLUMN nome TO nome_completo;
 
-    alter table radiologista
-    rename column nome to nome_completo;
 
+#### 8.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS <br>
 
-#### 8.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
+    SELECT *
+    FROM aparelho
+    WHERE marca like 'S%';
+    
+    SELECT *
+    FROM exame
+    WHERE to_char(data_hora_realizacao, 'YYYY') like '2024%';
+    
+    SELECT *
+    FROM exame
+    WHERE data_hora_realizacao::text like '2024-07%';
+    
+    SELECT *
+    FROM paciente
+    WHERE nome like 'joão%';
+    
+    SELECT *
+    FROM radiologista
+    WHERE nome like 'dr.%';
+    
+    SELECT *
+    FROM patologia
+    WHERE nome like '%ite';
+    
+    SELECT *
+    FROM paciente
+    WHERE nome like '_____';
+    
+    SELECT *
+    FROM exame
+    WHERE data_hora_realizacao::text like '____-08-07%';
+    
+    SELECT *
+    FROM patologia
+    WHERE nome not like '%e%';
+    
+    SELECT *
+    FROM exame
+    WHERE data_hora_realizacao::text like '____-__-13%';
+    
+    SELECT *
+    FROM exame
+    WHERE data_hora_realizacao::text like '____-08-%';
 
->select * from aparelho
- where marca like 'S%';
+    SELECT *
+    FROM paciente
+    WHERE data_nasc::text like '2001%';
 
->select * from exame
- where to_char(data_hora_realizacao, 'YYYY') like '2024%';
-
->select * from exame
- where data_hora_realizacao::text like '2024-07%';
-
->select * from paciente
- where nome like 'joão%';
+    SELECT *
+    FROM paciente
+    WHERE nome ilike 'Ana%';
     
->select * from radiologista
-    where nome like 'dr.%';
+    SELECT *
+    FROM exame
+    WHERE to_char(data_hora_realizacao, 'MM') like '01';
     
->select * from patologia
-    where nome like '%ite';
+    SELECT *
+    FROM paciente
+    WHERE id like 'ID__7%';
     
->select * from paciente
-    where nome like '_____';
+    SELECT *
+    FROM radiologista
+    WHERE nome ilike '% lee'
+        OR nome ilike '% johnson';
     
- >select * from exame
-    where data_hora_realizacao::text like '____-08-07%';
-    
->select * from patologia
-    where nome not like '%e%';
-    
->select * from exame
-    where data_hora_realizacao::text like '____-__-13%';
-    
->select * from exame
-    where data_hora_realizacao::text like '____-08-%';
-    
->select * from paciente
-    where data_nasc::text like '2001%';
-
-    a) Criar outras 5 consultas que envolvam like ou ilike
-    b) Criar uma consulta para cada tipo de função data apresentada.    
->select * from paciente
-    where nome ilike 'Ana%';
-    
->select * from exame
-    where to_char(data_hora_realizacao, 'MM') like '01';
-    
->select * from paciente
-    where id like 'ID__7%';
-    
->select * from radiologista
-    where nome ilike '% lee' or nome ilike '% johnson';
-
->select * from patologia
-where nivel_gravidade::text like '3%' 
-   or nivel_gravidade::text like '4%' 
-   or nivel_gravidade::text like '5%';
+    SELECT *
+    FROM patologia
+    WHERE nivel_gravidade::text like '3%'
+        OR nivel_gravidade::text like '4%'
+        OR nivel_gravidade::text like '5%';
 
 
 ># Marco de Entrega 02: Do item 6. até o item 9.1 (5 PTS) <br>
 
-#### 8.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
-    a) Criar minimo 3 de exclusão
+#### 8.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS <br>
+a) Exclusão
 
->delete from paciente where nome ilike 'joao%';
-
->delete from exame where data_hora_realizacao::text like '2024-08-05%';
-
->delete from patologia where nome like '%ite';
-
-    b) Criar minimo 3 de atualização
+    DELETE
+    FROM paciente
+    WHERE nome ilike 'joao%';
     
->update radiologista set nome = 'Dra. Lexie Grey' where nome ilike 'dra. Grey%';
-
->update aparelho set marca = 'Toyota' where marca like 'Samsung%';
-
->update patologia set nivel_gravidade = 5 where codigo = 9;
-
-
-#### 8.6	CONSULTAS COM INNER JOIN E ORDER BY (Mínimo 6)<br>
-    a) Uma junção que envolva todas as tabelas possuindo no mínimo 2 registros no resultado
-    b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
+    DELETE
+    FROM exame
+    WHERE data_hora_realizacao::text like '2024-08-05%';
     
->select
-    p.nome as paciente_nome,
-    e.data_hora_realizacao,
-    a.marca as aparelho_marca,
-    r.data_hora_geracao as registro_data,
-    la.data_hora_geracao as laudo_data,
-    r.condicaoehpatologica,
-    pr.confiabilidade,
-    pa.nome as patologia_nome
-from paciente p
-inner join exame e on p.codigo = e.fk_paciente_codigo
-inner join aparelho a on e.fk_aparelho_codigo = a.codigo
-inner join registro_exame r on e.codigo = r.fk_exame_codigo
-inner join laudo la on r.codigo = la.fk_exame_codigo
-inner join predicao pr on r.codigo = pr.fk_registro_exame_codigo
-inner join patologia pa on pr.fk_patologia_codigo = pa.codigo
-order by p.nome, e.data_hora_realizacao;
+    DELETE
+    FROM patologia
+    WHERE nome like '%ite';
+
+b) Atualização
+    
+    UPDATE radiologista
+    SET nome = 'Dra. Lexie Grey'
+    WHERE nome ilike 'dra. Grey%';
+    
+    UPDATE aparelho
+    SET marca = 'Toyota'
+    WHERE marca like 'Samsung%';
+    
+    UPDATE patologia
+    SET nivel_gravidade = 5
+    WHERE codigo = 9;
+
+
+#### 8.6	CONSULTAS COM INNER JOIN E ORDER BY )<br>
+    
+    SELECT p.nome AS paciente_nome,
+           e.data_hora_realizacao,
+           a.marca AS aparelho_marca,
+           r.data_hora_geracao AS registro_data,
+           la.data_hora_geracao AS laudo_data,
+           r.condicaoehpatologica,
+           pr.confiabilidade,
+           pa.nome AS patologia_nome
+    FROM paciente p
+    INNER JOIN exame e ON p.codigo = e.fk_paciente_codigo
+    INNER JOIN aparelho a ON e.fk_aparelho_codigo = a.codigo
+    INNER JOIN registro_exame r ON e.codigo = r.fk_exame_codigo
+    INNER JOIN laudo la ON r.codigo = la.fk_exame_codigo
+    INNER JOIN predicao pr ON r.codigo = pr.fk_registro_exame_codigo
+    INNER JOIN patologia pa ON pr.fk_patologia_codigo = pa.codigo
+    ORDER BY p.nome,
+             e.data_hora_realizacao;
 
 Consulta de exames e radiologistas
 
->select 
-    e.codigo as exame_codigo,
-    e.data_hora_realizacao,
-    r.nome as radiologista_nome,
-    la.data_hora_geracao as laudo_data
-from exame e
-inner join laudo la on e.codigo = la.fk_exame_codigo
-inner join radiologista r on la.fk_radiologista_codigo = r.codigo
-order by r.nome, e.data_hora_realizacao;
+    SELECT e.codigo AS exame_codigo,
+           e.data_hora_realizacao,
+           r.nome AS radiologista_nome,
+           la.data_hora_geracao AS laudo_data
+    FROM exame e
+    INNER JOIN laudo la ON e.codigo = la.fk_exame_codigo
+    INNER JOIN radiologista r ON la.fk_radiologista_codigo = r.codigo
+    ORDER BY r.nome,
+             e.data_hora_realizacao;
 
 Consulta de pacientes e suas patologias
 
->select 
-    p.nome as paciente_nome,
-    e.data_hora_realizacao,
-    pa.nome as patologia_nome,
-    pa.nivel_gravidade
-from paciente p
-inner join exame e on p.codigo = e.fk_paciente_codigo
-inner join registro_exame r on e.codigo = r.fk_exame_codigo
-inner join predicao pr on r.codigo = pr.fk_registro_exame_codigo
-inner join patologia pa on pr.fk_patologia_codigo = pa.codigo
-order by p.nome, pa.nivel_gravidade desc;
+    SELECT p.nome AS paciente_nome,
+           e.data_hora_realizacao,
+           pa.nome AS patologia_nome,
+           pa.nivel_gravidade
+    FROM paciente p
+    INNER JOIN exame e ON p.codigo = e.fk_paciente_codigo
+    INNER JOIN registro_exame r ON e.codigo = r.fk_exame_codigo
+    INNER JOIN predicao pr ON r.codigo = pr.fk_registro_exame_codigo
+    INNER JOIN patologia pa ON pr.fk_patologia_codigo = pa.codigo
+    ORDER BY p.nome,
+             pa.nivel_gravidade DESC;
 
 Consulta de aparelhos, disponibilidade e exames realizados neles
 
->select 
-    a.marca as aparelho_marca,
-    a.disponivel,
-    e.data_hora_realizacao
-from aparelho a
-inner join exame e on a.codigo = e.fk_aparelho_codigo
-order by a.marca, e.data_hora_realizacao;
+    SELECT a.marca AS aparelho_marca,
+           a.disponivel,
+           e.data_hora_realizacao
+    FROM aparelho a
+    INNER JOIN exame e ON a.codigo = e.fk_aparelho_codigo
+    ORDER BY a.marca,
+             e.data_hora_realizacao;
 
 Consulta de laudos e radiologistas que geraram
 
->select 
-    la.codigo as laudo_codigo,
-    la.data_hora_geracao,
-    r.nome as radiologista_nome
-from laudo la
-inner join radiologista r on la.fk_radiologista_codigo = r.codigo
-order by r.nome, la.data_hora_geracao;
+    SELECT la.codigo AS laudo_codigo,
+           la.data_hora_geracao,
+           r.nome AS radiologista_nome
+    FROM laudo la
+    INNER JOIN radiologista r ON la.fk_radiologista_codigo = r.codigo
+    ORDER BY r.nome,
+             la.data_hora_geracao;
 
 Consulta de patologias diagnosticadas em laudos
 
->select 
-    pa.nome as patologia_nome,
-    la.data_hora_geracao
-from patologia pa
-inner join patologia_laudo pl on pa.codigo = pl.fk_patologia_codigo
-inner join laudo la on pl.fk_laudo_codigo = la.codigo
-order by la.data_hora_geracao, pa.nome;
+    SELECT pa.nome AS patologia_nome,
+           la.data_hora_geracao
+    FROM patologia pa
+    INNER JOIN patologia_laudo pl ON pa.codigo = pl.fk_patologia_codigo
+    INNER JOIN laudo la ON pl.fk_laudo_codigo = la.codigo
+    ORDER BY la.data_hora_geracao,
+             pa.nome;
 
-#### 8.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
-    a) Criar minimo 2 envolvendo algum tipo de junção
+#### 8.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO <br>
     
 Quantidade de exames por radiologista
 
->select 
-    r.nome as radiologista_nome,
-    count(la.codigo) as total_exames
-from radiologista r
-inner join laudo la on r.codigo = la.fk_radiologista_codigo
-group by r.nome;
+    SELECT r.nome AS radiologista_nome,
+           count(la.codigo) AS total_exames
+    FROM radiologista r
+    INNER JOIN laudo la ON r.codigo = la.fk_radiologista_codigo
+    GROUP BY r.nome;
 
 Número de exames realizados por mês
 
->select 
-    to_char(e.data_hora_realizacao, 'YYYY-MM') as mes,
-    count(e.codigo) as total_exames
-from exame e
-group by to_char(e.data_hora_realizacao, 'YYYY-MM')
-order by mes;
+    SELECT to_char(e.data_hora_realizacao, 'YYYY-MM') AS mes,
+           count(e.codigo) AS total_exames
+    FROM exame e
+    GROUP BY to_char(e.data_hora_realizacao, 'YYYY-MM')
+    ORDER BY mes;
 
 Número de pacientes por ano de nascimento
 
->select 
-    extract(year from p.data_nasc) as ano_nascimento,
-    count(p.codigo) as total_pacientes
-from paciente p
-group by extract(year from p.data_nasc)
-order by ano_nascimento;
+    SELECT extract(YEAR
+                   FROM p.data_nasc) AS ano_nascimento,
+           count(p.codigo) AS total_pacientes
+    FROM paciente p
+    GROUP BY extract(YEAR
+                     FROM p.data_nasc)
+    ORDER BY ano_nascimento;
 
 Quantidade de predições por exame
 
->select e.codigo as exame_codigo,
-count(pr.codigo) as total_predicoes
-from exame e
-left join predicao pr on e.codigo = pr.fk_registro_exame_codigo
-group by e.codigo
-order by total_predicoes desc;
-
+    SELECT e.codigo AS exame_codigo,
+           count(pr.codigo) AS total_predicoes
+    FROM exame e
+    LEFT JOIN predicao pr ON e.codigo = pr.fk_registro_exame_codigo
+    GROUP BY e.codigo
+    ORDER BY total_predicoes DESC;
+    
 Quantidade de laudos por patologia
 
->select p.nome as patologia, count( pl.codigo) as total_laudos from patologia p
-join patologia_laudo pl on p.codigo = pl.fk_patologia_codigo group by p.nome
-order by total_laudos desc;
+    SELECT p.nome AS patologia,
+           count(pl.codigo) AS total_laudos
+    FROM patologia p
+    JOIN patologia_laudo pl ON p.codigo = pl.fk_patologia_codigo
+    GROUP BY p.nome
+    ORDER BY total_laudos DESC;
 
-#### 8.8	CONSULTAS COM LEFT, RIGHT E FULL JOIN (Mínimo 4)<br>
+#### 8.8	CONSULTA COM LEFT JOIN <br>
 
+    SELECT
+        e.codigo as IDExame,
+        re.codigo as IDRegistroExame,
+        l.codigo as IDLaudo
+    FROM exame e
+    LEFT JOIN registro_exame re
+    ON e.codigo = re.fk_exame_codigo
+    LEFT JOIN laudo l
+    ON e.codigo = l.fk_exame_codigo
 
-#### 8.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
+#### 8.9	SUBCONSULTA COM VIEW <br>
 
->CREATE VIEW ExameDetalhado AS
-SELECT
-    e.codigo AS ExameCodigo,
-    e.data_hora_realizacao AS DataRealizacao,
-    pa.nome AS NomePaciente,
-    a.marca AS MarcaAparelho,
-    r.nome AS NomeRadiologista,
-    (SELECT COUNT(*)
-     FROM patologia_laudo pl
-     JOIN patologia p ON pl.fk_patologia_codigo = p.codigo
-     WHERE pl.fk_laudo_codigo = l.codigo) AS TotalPatologias
-FROM
-    exame e
-LEFT JOIN
-    paciente pa ON e.fk_paciente_codigo = pa.codigo
-LEFT JOIN
-    aparelho a ON e.fk_aparelho_codigo = a.codigo
-LEFT JOIN
-    laudo l ON l.fk_exame_codigo = e.codigo
-LEFT JOIN
-    radiologista r ON l.fk_radiologista_codigo = r.codigo;
+    CREATE VIEW ExameDetalhado AS
+    SELECT
+        e.codigo AS ExameCodigo,
+        e.data_hora_realizacao AS DataRealizacao,
+        pa.nome AS NomePaciente,
+        a.marca AS MarcaAparelho,
+        r.nome AS NomeRadiologista,
+        (SELECT COUNT(*)
+         FROM patologia_laudo pl
+         JOIN patologia p ON pl.fk_patologia_codigo = p.codigo
+         WHERE pl.fk_laudo_codigo = l.codigo) AS TotalPatologias
+    FROM
+        exame e
+    LEFT JOIN
+        paciente pa ON e.fk_paciente_codigo = pa.codigo
+    LEFT JOIN
+        aparelho a ON e.fk_aparelho_codigo = a.codigo
+    LEFT JOIN
+        laudo l ON l.fk_exame_codigo = e.codigo
+    LEFT JOIN
+        radiologista r ON l.fk_radiologista_codigo = r.codigo;
+    
+    SELECT * FROM ExameDetalhado;
 
-SELECT * FROM ExameDetalhado;
-
-
->SELECT
-    e.codigo as IDExame,
-    re.codigo as IDRegistroExame,
-    l.codigo as IDLaudo
-FROM exame e
-LEFT JOIN registro_exame re
-ON e.codigo = re.fk_exame_codigo
-LEFT JOIN laudo l
-ON e.codigo = l.fk_exame_codigo
-
-
-#### 8.10	SUBCONSULTAS (Mínimo 4)<br>
-     a) Criar minimo 1 envolvendo GROUP BY
-     b) Criar minimo 1 envolvendo algum tipo de junção
 
 ># Marco de Entrega 03: Do item 9.2 até o ítem 9.10 (10 PTS)<br>
 
 ### 9. RELATÓRIOS E GRÁFICOS
 
-#### a) análises e resultados provenientes do banco de dados desenvolvido (usar modelo disponível)
-
-https://colab.research.google.com/drive/1K6RYt6ttdqUouDLNsyD8BWW2p1R9EshP?usp=sharing
-
-
+[Link para o Colab contendo os relatórios e gráficos](
+https://colab.research.google.com/drive/1K6RYt6ttdqUouDLNsyD8BWW2p1R9EshP?usp=sharing)
     
 
-### 10.	AJUSTES DA DOCUMENTAÇÃO, CRIAÇÃO DOS SLIDES E VÍDEO PARA APRESENTAÇAO FINAL <br>
+### 10. VÍDEO DE APRESENTAÇAO FINAL <br>
 
-#### a) Modelo (pecha kucha)<br>
-#### b) Tempo de apresentação 6:40
+[Link para o vídeo de apresentação](https://drive.google.com/file/d/1fUFd2HWn6h-E7rNstmBKE6xCB3RZYz5k/view?usp=sharing)
 
-https://drive.google.com/file/d/1fUFd2HWn6h-E7rNstmBKE6xCB3RZYz5k/view?usp=sharing
