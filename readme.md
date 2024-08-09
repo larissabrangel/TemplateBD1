@@ -795,39 +795,39 @@ Quantidade de laudos por patologia
 
 Pacientes e seus exames
 
->select 
+    select 
     p.nome as paciente_nome,
     e.data_hora_realizacao as exame_data
-from paciente p
-left join exame e on p.codigo = e.fk_paciente_codigo
-order by p.nome;
+    from paciente p
+    left join exame e on p.codigo = e.fk_paciente_codigo
+    order by p.nome;
 
 Exames e os aparelhos utilizados
 
->select 
-    e.codigo as exame_codigo,
-    a.marca as aparelho_marca
-from exame e
-right join aparelho a on e.fk_aparelho_codigo = a.codigo
-order by e.codigo;
+    select 
+        e.codigo as exame_codigo,
+        a.marca as aparelho_marca
+    from exame e
+    right join aparelho a on e.fk_aparelho_codigo = a.codigo
+    order by e.codigo;
 
 Radiologistas e laudos gerados
 
->select 
-    r.nome as radiologista_nome,
-    la.data_hora_geracao as laudo_data
-from radiologista r
-full join laudo la on r.codigo = la.fk_radiologista_codigo
-order by r.nome;
+    select 
+        r.nome as radiologista_nome,
+        la.data_hora_geracao as laudo_data
+    from radiologista r
+    full join laudo la on r.codigo = la.fk_radiologista_codigo
+    order by r.nome;
 
 Patologias identificadas em predições
 
->select 
-    pa.nome as patologia_nome,
-    pr.confiabilidade as predicao_confiabilidade
-from patologia pa
-left join predicao pr on pa.codigo = pr.fk_patologia_codigo
-order by pa.nome;
+    select 
+        pa.nome as patologia_nome,
+        pr.confiabilidade as predicao_confiabilidade
+    from patologia pa
+    left join predicao pr on pa.codigo = pr.fk_patologia_codigo
+    order by pa.nome;
 
 
 #### 8.9	CONSULTA COM SELF JOIN E VIEW <br>
@@ -871,55 +871,55 @@ order by pa.nome;
 
 Aparelhos usados em exames que deram patologicos
 
->select 
-    a.marca as aparelho_marca
-from aparelho a
-where a.codigo in (
-    select e.fk_aparelho_codigo
-    from exame e
-    inner join registro_exame r on e.codigo = r.fk_exame_codigo
-    where r.condicaoEhPatologica = true
-);
+    select 
+        a.marca as aparelho_marca
+    from aparelho a
+    where a.codigo in (
+        select e.fk_aparelho_codigo
+        from exame e
+        inner join registro_exame r on e.codigo = r.fk_exame_codigo
+        where r.condicaoEhPatologica = true
+    );
 
 Pacientes sem laudo
 
->select 
-    p.nome as paciente_nome
-from paciente p
-where p.codigo not in (
-    select e.fk_paciente_codigo
-    from exame e
-    inner join laudo l on e.codigo = l.fk_exame_codigo
-);
+    select 
+        p.nome as paciente_nome
+    from paciente p
+    where p.codigo not in (
+        select e.fk_paciente_codigo
+        from exame e
+        inner join laudo l on e.codigo = l.fk_exame_codigo
+    );
 
 Radiologistas que não realizaram nenhum laudo
 
->select 
-    r.nome as radiologista_nome
-from radiologista r
-where r.codigo not in (
-    select l.fk_radiologista_codigo
-    from laudo l
-);
+    select 
+        r.nome as radiologista_nome
+    from radiologista r
+    where r.codigo not in (
+        select l.fk_radiologista_codigo
+        from laudo l
+    );
 
 Patologias mais comuns em laudos e suas ocorrencias
 
->select 
-    pa.nome as patologia_nome,
-    count(pl.fk_patologia_codigo) as numero_ocorrencias
-from patologia pa
-inner join patologia_laudo pl on pa.codigo = pl.fk_patologia_codigo
-group by pa.nome
-having count(pl.fk_patologia_codigo) > (
-    select avg(numero_ocorrencias) 
-    from (
-        select count(*) as numero_ocorrencias
-        from patologia_laudo
-        group by fk_patologia_codigo
-    ) as subconsulta
-);
-
+    select 
+        pa.nome as patologia_nome,
+        count(pl.fk_patologia_codigo) as numero_ocorrencias
+    from patologia pa
+    inner join patologia_laudo pl on pa.codigo = pl.fk_patologia_codigo
+    group by pa.nome
+    having count(pl.fk_patologia_codigo) > (
+        select avg(numero_ocorrencias) 
+        from (
+            select count(*) as numero_ocorrencias
+            from patologia_laudo
+            group by fk_patologia_codigo
+        ) as subconsulta
+    );
     
+        
 
 
 ### 9. RELATÓRIOS E GRÁFICOS
