@@ -464,7 +464,8 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 
 
 ### 8.	TABELAS E PRINCIPAIS CONSULTAS<br>
-    Link colab: https://colab.research.google.com/drive/19KaUKHYjk2WrfzGlfKl_lRcUl4wYqiIR?usp=sharing
+    Link colab: 
+https://colab.research.google.com/drive/19KaUKHYjk2WrfzGlfKl_lRcUl4wYqiIR?usp=sharing
 #### 8.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 
 #### 8.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
