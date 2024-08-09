@@ -92,12 +92,8 @@ DISPONIVEL (da tabela RADIOLOGISTA): Campo para indicar se um radiologista está
 
 
 
-># Marco de Entrega 01: Do item 1 até o item 5.2 (5 PTS) <br>
-
 ### 5.	MODELO LÓGICO<br>
 ![BD_PACIENTES_LOGICO](https://github.com/user-attachments/assets/4b80143f-5b64-448d-a36c-67c71ad79e16)
-
-
 
 
 ### 6.	MODELO FÍSICO<br>
@@ -569,7 +565,7 @@ DISPONIVEL (da tabela RADIOLOGISTA): Campo para indicar se um radiologista está
     RENAME COLUMN nome TO nome_completo;
 
 
-#### 8.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS <br>
+#### 8.3    CONSULTAS QUE USAM OPERADORES LIKE E DATAS <br>
 
     SELECT *
     FROM aparelho
@@ -643,9 +639,7 @@ DISPONIVEL (da tabela RADIOLOGISTA): Campo para indicar se um radiologista está
         OR nivel_gravidade::text like '5%';
 
 
-># Marco de Entrega 02: Do item 6. até o item 9.1 (5 PTS) <br>
-
-#### 8.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS <br>
+#### 8.4	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS <br>
 a) Exclusão
 
     DELETE
@@ -675,7 +669,7 @@ b) Atualização
     WHERE codigo = 9;
 
 
-#### 8.6	CONSULTAS COM INNER JOIN E ORDER BY )<br>
+#### 8.5	CONSULTAS COM INNER JOIN E ORDER BY )<br>
     
     SELECT p.nome AS paciente_nome,
            e.data_hora_realizacao,
@@ -797,7 +791,7 @@ Quantidade de laudos por patologia
     GROUP BY p.nome
     ORDER BY total_laudos DESC;
 
-#### 8.8	CONSULTA COM LEFT JOIN <br>
+#### 8.6	CONSULTA COM LEFT JOIN <br>
 
     SELECT
         e.codigo as IDExame,
@@ -809,7 +803,7 @@ Quantidade de laudos por patologia
     LEFT JOIN laudo l
     ON e.codigo = l.fk_exame_codigo
 
-#### 8.9	SUBCONSULTA COM VIEW <br>
+#### 8.7	SUBCONSULTA COM VIEW <br>
 
     CREATE VIEW ExameDetalhado AS
     SELECT
@@ -835,8 +829,6 @@ Quantidade de laudos por patologia
     
     SELECT * FROM ExameDetalhado;
 
-
-># Marco de Entrega 03: Do item 9.2 até o ítem 9.10 (10 PTS)<br>
 
 ### 9. RELATÓRIOS E GRÁFICOS
 
