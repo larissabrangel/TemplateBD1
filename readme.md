@@ -650,6 +650,24 @@ where nivel_gravidade::text like '3%'
 #### 8.6	CONSULTAS COM INNER JOIN E ORDER BY (Mínimo 6)<br>
     a) Uma junção que envolva todas as tabelas possuindo no mínimo 2 registros no resultado
     b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
+>select
+    p.nome as paciente_nome,
+    e.data_hora_realizacao,
+    a.marca as aparelho_marca,
+    r.data_hora_geracao as registro_data,
+    la.data_hora_geracao as laudo_data,
+    r.condicaoehpatologica,
+    pr.confiabilidade,
+    pa.nome as patologia_nome
+from paciente p
+inner join exame e on p.codigo = e.fk_paciente_codigo
+inner join aparelho a on e.fk_aparelho_codigo = a.codigo
+inner join registro_exame r on e.codigo = r.fk_exame_codigo
+inner join laudo la on r.codigo = la.fk_exame_codigo
+inner join predicao pr on r.codigo = pr.fk_registro_exame_codigo
+inner join patologia pa on pr.fk_patologia_codigo = pa.codigo
+order by p.nome, e.data_hora_realizacao;
+
 
 #### 8.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
     a) Criar minimo 2 envolvendo algum tipo de junção
