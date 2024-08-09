@@ -42,53 +42,53 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
     Grupo02: Alex Rossoni, João Pedro Pagotto, Sofia de Alcantara, Thiago Carvalho e Wal Candeia
 
 #### 4.2 Descrição dos dados
-    PACIENTE: Tabela que armazena as informações relativas ao paciente.
-    CODIGO (da tabela PACIENTE): Campo para indicar o código de identificação no banco de dados do paciente.
-    CPF (da tabela PACIENTE): Campo para indicar o cpf do paciente.
-    NOME (da tabela PACIENTE): Campo para indicar o nome do paciente.
-    DATA_NASC: Campo para indicar a data de nascimento do paciente.
-    ID: Identificador do paciente
-    
-    EXAME: Tabela que armazena as informações sobre um exame realizado.
-    CODIGO (da tabela EXAME): Campo para indicar o código de identificação no banco de dados do exame.
-    DATA_HORA_REALIZACAO: Campo para indicar a data e o horário em que um exame foi realizado com um paciente.
-    
-    APARELHO: Tabela que armazena as informações sobre um aparelho de raio X.
-    CODIGO (da tabela APARELHO): Campo para indicar o código de identificação no banco de dados do aparelho.
-    MARCA: Campo para indicar a marca origem de um aparelho.
-    DISPONIVEL (da tabela APARELHO): Campo para indicar se um aparelho está ou não disponível para o uso no momento.
-    
-    REGISTRO_EXAME: Tabela que armazena as informações sobre um registro de exame gerado após o uso de um aparelho.
-    CODIGO (da tabela REGISTRO_EXAME): Campo para indicar o código de identificação no banco de dados do registro de exame.
-    DATA_HORA_GERACAO (da tabela REGISTRO_EXAME): Campo para indicar a data e o horário de geração de um relatório após a predição de patologias da inteligência artificial.
-    CONDICAOEHPATOLOGICA: Campo booleano para indicar se a condição reconhecida é de saúde, ou se é patológica.
-    FK_EXAME_CODIGO (da tabela REGISTRO_EXAME): Campo para indicar uma chave estrangeira apontando ao exame relacionado ao mesmo caso deste registro_exame.
-    
-    IMAGEM_RECONHECIMENTO: Tabela que armazena as informações sobre as imagens proporcionadas para a predição da inteligência artificial sobre a condição ser ou não patológica.
-    CODIGO (da tabela IMAGEM_RECONHECIMENTO): Campo para indicar o código de identificação no banco de dados de uma imagem usada para o reconhecimento.
-    IMG: Campo para conter um link que lide à imagem utilizada em um registro para depois fazer uma predição.
-    
-    PATOLOGIA: Tabela que armazena as informações sobre uma patologia possível.
-    CODIGO (da tabela PATOLOGIA): Campo para indicar o código de identificação no banco de dados de uma patologia.
-    NOME (da tabela PATOLOGIA): Campo para indicar o nome de uma patologia.
-    NIVEL_GRAVIDADE: Campo para indicar o nivel de gravidade pré-determinado de uma patologia.
+PACIENTE: Tabela que armazena as informações relativas ao paciente.
+CODIGO (da tabela PACIENTE): Campo para indicar o código de identificação no banco de dados do paciente.
+CPF (da tabela PACIENTE): Campo para indicar o cpf do paciente.
+NOME (da tabela PACIENTE): Campo para indicar o nome do paciente.
+DATA_NASC: Campo para indicar a data de nascimento do paciente.
+ID: Identificador do paciente
 
-    PREDICAO: Tabela que armazena as informações sobre uma predição realizada.
-    CODIGO (da tabela PREDICAO): Campo para indicar o código de identificação no banco de dados de uma predição.
-    FK_PATOLOGIA_CODIGO (da tabela PREDICAO): Campo para indicar uma chave estrangeira apontando à patologia prevista pela inteligência artificial de uma predição.
-    FK_REGISTRO_EXAME_CODIGO (da tabela PREDICAO): Campo para indicar uma chave estrangeira apontando o registro_exame relacionado ao caso envolvida com a predição realizada.
-    CONFIABILIDADE: Campo para indicar a confiabilidade dada pela IA na predição de certa patologia.
+EXAME: Tabela que armazena as informações sobre um exame realizado.
+CODIGO (da tabela EXAME): Campo para indicar o código de identificação no banco de dados do exame.
+DATA_HORA_REALIZACAO: Campo para indicar a data e o horário em que um exame foi realizado com um paciente.
 
-    LAUDO: Tabela que armazena as informações sobre um laudo.
-    CODIGO (da tabela LAUDO): Campo para indicar o código de identificação no banco de dados de um laudo.
-    DATA_HORA_GERACAO (da tabela LAUDO): Campo para indicar a data e o horário em que um laudo foi gerado por um radiologista para o paciente.
-    FK_EXAME_CODIGO (da tabela LAUDO): Campo para indicar uma chave estrangeira apontando ao exame relacionado ao mesmo caso deste laudo.
+APARELHO: Tabela que armazena as informações sobre um aparelho de raio X.
+CODIGO (da tabela APARELHO): Campo para indicar o código de identificação no banco de dados do aparelho.
+MARCA: Campo para indicar a marca origem de um aparelho.
+DISPONIVEL (da tabela APARELHO): Campo para indicar se um aparelho está ou não disponível para o uso no momento.
 
-    RADIOLOGISTA: Tabela que armazena as informações sobre um radiologista.
-    CODIGO (da tabela RADIOLOGISTA): Campo para indicar o código de identificação no banco de dados de um radiologista que trabalha no local.
-    CPF (da tabela RADIOLOGISTA): Campo para indicar o cpf do radiologista.
-    NOME (da tabela RADIOLOGISTA): Campo para indicar o nome do radiologista.
-    DISPONIVEL (da tabela RADIOLOGISTA): Campo para indicar se um radiologista está ou não disponível para atendimento no momento.
+REGISTRO_EXAME: Tabela que armazena as informações sobre um registro de exame gerado após o uso de um aparelho.
+CODIGO (da tabela REGISTRO_EXAME): Campo para indicar o código de identificação no banco de dados do registro de exame.
+DATA_HORA_GERACAO (da tabela REGISTRO_EXAME): Campo para indicar a data e o horário de geração de um relatório após a predição de patologias da inteligência artificial.
+CONDICAOEHPATOLOGICA: Campo booleano para indicar se a condição reconhecida é de saúde, ou se é patológica.
+FK_EXAME_CODIGO (da tabela REGISTRO_EXAME): Campo para indicar uma chave estrangeira apontando ao exame relacionado ao mesmo caso deste registro_exame.
+
+IMAGEM_RECONHECIMENTO: Tabela que armazena as informações sobre as imagens proporcionadas para a predição da inteligência artificial sobre a condição ser ou não patológica.
+CODIGO (da tabela IMAGEM_RECONHECIMENTO): Campo para indicar o código de identificação no banco de dados de uma imagem usada para o reconhecimento.
+IMG: Campo para conter um link que lide à imagem utilizada em um registro para depois fazer uma predição.
+
+PATOLOGIA: Tabela que armazena as informações sobre uma patologia possível.
+CODIGO (da tabela PATOLOGIA): Campo para indicar o código de identificação no banco de dados de uma patologia.
+NOME (da tabela PATOLOGIA): Campo para indicar o nome de uma patologia.
+NIVEL_GRAVIDADE: Campo para indicar o nivel de gravidade pré-determinado de uma patologia.
+
+PREDICAO: Tabela que armazena as informações sobre uma predição realizada.
+CODIGO (da tabela PREDICAO): Campo para indicar o código de identificação no banco de dados de uma predição.
+FK_PATOLOGIA_CODIGO (da tabela PREDICAO): Campo para indicar uma chave estrangeira apontando à patologia prevista pela inteligência artificial de uma predição.
+FK_REGISTRO_EXAME_CODIGO (da tabela PREDICAO): Campo para indicar uma chave estrangeira apontando o registro_exame relacionado ao caso envolvida com a predição realizada.
+CONFIABILIDADE: Campo para indicar a confiabilidade dada pela IA na predição de certa patologia.
+
+LAUDO: Tabela que armazena as informações sobre um laudo.
+CODIGO (da tabela LAUDO): Campo para indicar o código de identificação no banco de dados de um laudo.
+DATA_HORA_GERACAO (da tabela LAUDO): Campo para indicar a data e o horário em que um laudo foi gerado por um radiologista para o paciente.
+FK_EXAME_CODIGO (da tabela LAUDO): Campo para indicar uma chave estrangeira apontando ao exame relacionado ao mesmo caso deste laudo.
+
+RADIOLOGISTA: Tabela que armazena as informações sobre um radiologista.
+CODIGO (da tabela RADIOLOGISTA): Campo para indicar o código de identificação no banco de dados de um radiologista que trabalha no local.
+CPF (da tabela RADIOLOGISTA): Campo para indicar o cpf do radiologista.
+NOME (da tabela RADIOLOGISTA): Campo para indicar o nome do radiologista.
+DISPONIVEL (da tabela RADIOLOGISTA): Campo para indicar se um radiologista está ou não disponível para atendimento no momento.
 
 
 
