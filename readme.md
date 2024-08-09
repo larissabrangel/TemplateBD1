@@ -39,7 +39,7 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
     
 #### 4.1 Validação do Modelo Conceitual
     Grupo01: Thiago Borges, Caio Lessa, Marcos Vinicius, Davidson Santos
-    [Grupo02]: [Nomes dos que participaram na avaliação]
+    Grupo02: Alex Rossoni, João Pedro Pagotto, Sofia de Alcantara, Thiago Carvalho e Wal Candeia
 
 #### 4.2 Descrição dos dados
     PACIENTE: Tabela que armazena as informações relativas ao paciente.
@@ -464,7 +464,7 @@ Matheus Caldas: ifesmatheus@gmail.com<br>
 
 
 ### 8.	TABELAS E PRINCIPAIS CONSULTAS<br>
-    colocar o link do colab <br>
+    Link colab: https://colab.research.google.com/drive/19KaUKHYjk2WrfzGlfKl_lRcUl4wYqiIR?usp=sharing
 #### 8.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 
 #### 8.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
@@ -743,6 +743,8 @@ order by la.data_hora_geracao, pa.nome;
 ### 9. RELATÓRIOS E GRÁFICOS
 
 #### a) análises e resultados provenientes do banco de dados desenvolvido (usar modelo disponível)
+
+https://colab.research.google.com/drive/1K6RYt6ttdqUouDLNsyD8BWW2p1R9EshP?usp=sharing
 
 
     
